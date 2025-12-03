@@ -128,6 +128,7 @@ p {
     cursor: pointer;
     border: none;
     text-align: center;
+   color: var(--white);
 }
 
 .btn-primary {
@@ -161,6 +162,7 @@ p {
 
 .btn-primary-small:hover {
     background: var(--primary-light);
+   color: var(--white);
 }
 
 .btn-submit {
