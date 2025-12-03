@@ -127,6 +127,7 @@ p {
     transition: var(--transition);
     cursor: pointer;
     border: none;
+    color: #fff;
     text-align: center;
 }
 
