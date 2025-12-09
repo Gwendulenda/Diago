@@ -597,31 +597,5 @@
     </footer>
 
     <script src="js/main.js"></script>
-
-    <script>
-document.getElementById("contactForm").addEventListener("submit", function(e){ 
-    e.preventDefault(); // évite de changer de page
-
-    const form = e.target;
-    const formData = new FormData(form);
-
-    fetch("https://script.google.com/macros/s/AKfycbxXTdo1mxDsjKKDYjw2_FaFhLpwcgqq0ImlNr738pW2vd4y15xi_FEhc3FOzlRGzx2Y6A/exec", {
-        method: "POST",
-        body: formData
-    })
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById("formMessage").innerHTML = 
-        "<span style='color:green;font-weight:bold'>Message envoyé avec succès !</span>";
-
-        form.reset(); // vide le formulaire après envoi (facultatif)
-    })
-    .catch(error => {
-        document.getElementById("formMessage").innerHTML =
-        "<span style='color:red;font-weight:bold'>Une erreur est survenue. Veuillez réessayer.</span>";
-    });
-});
-</script>
-
 </body>
 </html>
