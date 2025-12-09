@@ -157,22 +157,6 @@ if (contactForm) {
             // Reset form
             contactForm.reset();
 
-        } catch (error) {
-            console.error('Form submission error:', error);
-            showMessage('error', '❌ Une erreur est survenue lors de l\'envoi de votre demande. Veuillez réessayer ou nous contacter directement par téléphone.');
-        } finally {
-            // Re-enable submit button
-            submitButton.disabled = false;
-            submitButton.innerHTML = originalButtonText;
-        }
-    });
-}
-            const result = await response.json();
-
-            if (!response.ok || !result.success) {
-                throw new Error(result.message || "Erreur lors de l'enregistrement dans Google Sheets");
-            }
-
             // Afficher message de succès
             showMessage('success', '✅ Merci pour votre demande ! Nous vous recontacterons sous 24h pour échanger sur votre situation et planifier l\'intervention.');
 
@@ -408,3 +392,4 @@ console.log('%c🏠 Diagnostic Humidité Pro', 'color: #004d99; font-size: 24px;
 console.log('%cExpertise indépendante en diagnostic d\'humidité', 'color: #666; font-size: 14px;');
 
 console.log('%cVal-de-Marne (94) et Seine-et-Marne (77)', 'color: #666; font-size: 14px;');
+
