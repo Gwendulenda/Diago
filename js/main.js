@@ -4,7 +4,7 @@
 
 const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
 const mobileMenu = document.querySelector('.mobile-menu');
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxXTdo1mxDsjKKDYjw2_FaFhLpwcgqq0ImlNr738pW2vd4y15xi_FEhc3FOzlRGzx2Y6A/exec";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzCZOWJeQX4k8F7PRPuVAVcX3lO2GFOVjIPulA0B8JAHan9bFruhaaKMAcaXXJr6VwOSA/exec";
 
 if (mobileMenuToggle && mobileMenu) {
     mobileMenuToggle.addEventListener('click', () => {
@@ -141,7 +141,7 @@ if (contactForm) {
         
         try {
             // Envoi vers Google Apps Script
-            const response = await fetch("https://script.google.com/macros/s/AKfycbyoyJw-ivnVs7k3bhYNs9KUtUTlI91q9HgRYVFdlg6nJYRblqyBG7XqKXxXJEo_eZie1Q/exec", {
+            const response = await fetch("https://script.google.com/macros/s/AKfycbzCZOWJeQX4k8F7PRPuVAVcX3lO2GFOVjIPulA0B8JAHan9bFruhaaKMAcaXXJr6VwOSA/exec", {
                 method: 'POST',
                 mode: 'no-cors', // Important pour éviter les erreurs CORS
                 headers: {
@@ -392,4 +392,5 @@ console.log('%c🏠 Diagnostic Humidité Pro', 'color: #004d99; font-size: 24px;
 console.log('%cExpertise indépendante en diagnostic d\'humidité', 'color: #666; font-size: 14px;');
 
 console.log('%cVal-de-Marne (94) et Seine-et-Marne (77)', 'color: #666; font-size: 14px;');
+
 
