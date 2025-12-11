@@ -623,6 +623,37 @@
             </div>
         </a>
     </div>
+
+                            <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const stickyBtn = document.getElementById('sticky-cta-mobile');
+            
+            // Fonction pour gérer l'affichage au scroll
+            function handleScroll() {
+                // Si on a scrollé plus de 150px
+                if (window.scrollY > 150) {
+                    stickyBtn.classList.add('is-visible');
+                } else {
+                    stickyBtn.classList.remove('is-visible');
+                }
+            }
+
+            // Écouteur d'événement optimisé
+            let ticking = false;
+            window.addEventListener('scroll', function() {
+                if (!ticking) {
+                    window.requestAnimationFrame(function() {
+                        handleScroll();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            });
+            
+            // Vérification initiale
+            handleScroll();
+        });
+    </script>
                             
 </body>
 </html>
