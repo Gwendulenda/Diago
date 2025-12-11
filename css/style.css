@@ -1435,21 +1435,7 @@ p {
 }
 
 <style>
-        /* 1. VARIABLES DE COULEURS 
-           Ajustez ces valeurs pour coller exactement à votre site Diago.
-        */
-        :root {
-            --cta-color: #2563EB; /* Remplacez par votre couleur principale */
-            --cta-hover: #1d4ed8; /* Une teinte légèrement plus foncée */
-            --cta-text: #ffffff;
-            --bg-sticky: rgba(255, 255, 255, 0.95); /* Fond du sticky mobile */
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --font-family: system-ui, -apple-system, sans-serif; /* Votre typo actuelle */
-        }
-
-        /* Reset basique pour la démo (ne pas copier si vous avez déjà un reset) */
-        body { font-family: var(--font-family); margin: 0; padding: 0; color: #333; line-height: 1.6; }
-        
+       
         /* --- STYLE GLOBAL DES BOUTONS D'APPEL --- */
         .btn-call {
             display: inline-flex;
@@ -1765,4 +1751,5 @@ p {
     }
 
 }
+
 
