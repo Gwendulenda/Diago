@@ -1282,6 +1282,158 @@ p {
     margin: 0;
 }
 
+/* ... [Votre code CSS existant reste au dessus] ... */
+
+/* ===================================
+   PAGE MENTIONS LÉGALES
+   =================================== */
+
+.legal-section {
+    padding: var(--section-padding);
+    background: var(--white);
+    min-height: 80vh; /* Assure que la page a du corps même si peu de contenu */
+}
+
+/* Conteneur spécifique pour le texte (plus étroit pour la lisibilité) */
+.legal-content {
+    max-width: 900px; /* Surcharge le 1200px du container standard pour la lecture */
+    position: relative;
+}
+
+/* Lien de retour */
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--primary-medium);
+    text-decoration: none;
+    font-weight: 600;
+    margin-bottom: 40px;
+    transition: var(--transition);
+    padding: 8px 16px;
+    background: var(--primary-pale);
+    border-radius: var(--radius-sm);
+}
+
+.back-link:hover {
+    background: var(--primary-medium);
+    color: var(--white);
+    transform: translateX(-5px);
+}
+
+/* Titres de la page légale */
+.legal-content h1 {
+    color: var(--primary-dark);
+    margin-bottom: 0.5rem;
+}
+
+.legal-content > p > em {
+    color: var(--gray-600);
+    font-style: normal;
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 50px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.legal-content h2 {
+    font-size: 1.8rem;
+    color: var(--primary-dark);
+    margin-top: 50px;
+    margin-bottom: 20px;
+    padding-left: 15px;
+    border-left: 4px solid var(--accent-orange); /* Rappel de l'accent */
+}
+
+.legal-content h3 {
+    font-size: 1.3rem;
+    color: var(--gray-800);
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+/* Paragraphes et Listes */
+.legal-content p {
+    color: var(--gray-700);
+    margin-bottom: 1rem;
+    text-align: justify; /* Plus propre pour du juridique */
+}
+
+.legal-content ul {
+    margin-bottom: 20px;
+    padding-left: 20px;
+    list-style-type: disc;
+}
+
+.legal-content ul li {
+    margin-bottom: 8px;
+    color: var(--gray-700);
+    padding-left: 8px;
+}
+
+.legal-content ul li::marker {
+    color: var(--primary-medium);
+}
+
+/* Boîtes stylisées pour Editeur et Hébergeur (class="legal-box") */
+.legal-box {
+    background: var(--gray-100);
+    padding: 30px;
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--primary-medium); /* Même style que .contact-zone */
+    margin-bottom: 30px;
+    box-shadow: var(--shadow-sm);
+}
+
+.legal-box p {
+    margin-bottom: 10px;
+    text-align: left; /* Annule le justifié pour ces infos courtes */
+}
+
+.legal-box p:last-child {
+    margin-bottom: 0;
+}
+
+.legal-box strong {
+    color: var(--primary-dark);
+    font-weight: 600;
+    min-width: 120px;
+    display: inline-block;
+}
+
+.legal-box a {
+    color: var(--primary-medium);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.legal-box a:hover {
+    text-decoration: underline;
+}
+
+/* Ajustements Responsive pour la page légale */
+@media (max-width: 768px) {
+    .legal-content h2 {
+        font-size: 1.5rem;
+    }
+    
+    .legal-box {
+        padding: 20px;
+    }
+    
+    .legal-box strong {
+        display: block; /* Passe les labels au dessus sur mobile */
+        min-width: auto;
+        margin-bottom: 4px;
+    }
+    
+    .back-link {
+        width: 100%; /* Bouton pleine largeur sur mobile */
+        justify-content: center;
+    }
+}
+
 /* ===================================
    RESPONSIVE DESIGN
    =================================== */
@@ -1452,4 +1604,5 @@ p {
     .btn-secondary {
         padding: 12px 24px;
     }
+
 }
