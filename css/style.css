@@ -56,12 +56,12 @@
 }
 
 /* ============================================
-   BOUTONS APPELER - DIRECTION ARTISTIQUE
+   BOUTONS APPELER - VERSION VOYANTE
    ============================================ */
 
 :root {
-    --cta-color: #2563eb; /* Bleu moderne cohérent avec votre site */
-    --cta-hover: #1d4ed8;
+    --cta-color: #10b981; /* Vert émeraude clair et voyant */
+    --cta-hover: #059669;
     --cta-text: #ffffff;
     --bg-sticky: rgba(255, 255, 255, 0.95);
 }
@@ -71,16 +71,16 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
-    background: linear-gradient(135deg, var(--cta-color) 0%, #3b82f6 100%);
+    background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
     color: var(--cta-text);
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 700;
     font-family: 'Inter', sans-serif;
     border-radius: 50px;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
     border: none;
-    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+    box-shadow: 0 4px 20px rgba(16, 185, 129, 0.5);
     position: relative;
     overflow: hidden;
 }
@@ -93,7 +93,7 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
     transition: left 0.5s;
 }
 
@@ -102,42 +102,46 @@
 }
 
 .btn-call:hover {
-    background: linear-gradient(135deg, var(--cta-hover) 0%, var(--cta-color) 100%);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 25px rgba(37, 99, 235, 0.4);
+    background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 6px 30px rgba(16, 185, 129, 0.6);
 }
 
-/* Animation flashante subtile */
+/* Animation flashante PLUS VISIBLE */
 @keyframes flash-glow {
     0%, 100% { 
-        box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        box-shadow: 0 4px 20px rgba(16, 185, 129, 0.5);
+        transform: scale(1);
     }
     50% { 
-        box-shadow: 0 4px 25px rgba(37, 99, 235, 0.6), 0 0 30px rgba(37, 99, 235, 0.3);
+        box-shadow: 0 4px 35px rgba(16, 185, 129, 0.8), 
+                    0 0 40px rgba(16, 185, 129, 0.5),
+                    0 0 60px rgba(16, 185, 129, 0.3);
+        transform: scale(1.03);
     }
 }
 
 .btn-call {
-    animation: flash-glow 3s ease-in-out infinite;
+    animation: flash-glow 2s ease-in-out infinite;
 }
 
 .btn-call svg {
     width: 20px;
     height: 20px;
     fill: currentColor;
-    animation: ring-shake 3s ease-in-out infinite;
+    animation: ring-shake 2.5s ease-in-out infinite;
 }
 
-/* Animation de sonnerie du téléphone */
+/* Animation de sonnerie du téléphone PLUS MARQUÉE */
 @keyframes ring-shake {
-    0%, 90%, 100% { 
+    0%, 85%, 100% { 
         transform: rotate(0deg);
     }
-    92%, 96% { 
-        transform: rotate(-15deg);
+    87%, 91%, 95% { 
+        transform: rotate(-20deg);
     }
-    94%, 98% { 
-        transform: rotate(15deg);
+    89%, 93%, 97% { 
+        transform: rotate(20deg);
     }
 }
 
@@ -146,6 +150,7 @@
     padding: 12px 24px;
     font-size: 0.95rem;
     letter-spacing: 0.01em;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 @media (max-width: 768px) {
@@ -159,25 +164,27 @@
     text-align: center;
     margin-bottom: 35px;
     padding: 25px;
-    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
     border-radius: 12px;
-    border: 1px solid #bfdbfe;
+    border: 2px solid #10b981;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2);
 }
 
 .pre-form-cta-container h3 {
     margin-top: 0;
     margin-bottom: 18px;
     font-size: 1.3rem;
-    color: #1e293b;
+    color: #065f46;
     font-weight: 700;
 }
 
 .form-cta-big {
-    padding: 16px 36px;
-    font-size: 1.15rem;
+    padding: 18px 40px;
+    font-size: 1.2rem;
     width: 100%;
     max-width: 380px;
-    font-weight: 700;
+    font-weight: 800;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
 }
 
 /* --- 3. STICKY MOBILE BAR --- */
@@ -208,26 +215,26 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: var(--bg-sticky);
+    background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
     backdrop-filter: blur(12px) saturate(180%);
     -webkit-backdrop-filter: blur(12px) saturate(180%);
     padding: 14px 14px 14px 22px;
     border-radius: 20px;
     box-shadow: 
-        0 20px 35px -10px rgba(37, 99, 235, 0.25),
-        0 10px 20px -8px rgba(0, 0, 0, 0.1),
-        inset 0 1px 0 rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    animation: float-bounce 3s ease-in-out infinite;
+        0 20px 40px -10px rgba(16, 185, 129, 0.4),
+        0 10px 25px -8px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 1);
+    border: 2px solid #10b981;
+    animation: float-bounce 2.5s ease-in-out infinite;
 }
 
-/* Animation de flottement */
+/* Animation de flottement PLUS MARQUÉE */
 @keyframes float-bounce {
     0%, 100% { 
         transform: translateY(0px);
     }
     50% { 
-        transform: translateY(-5px);
+        transform: translateY(-8px);
     }
 }
 
@@ -238,43 +245,44 @@
 }
 
 .sticky-label {
-    font-size: 1rem;
-    font-weight: 800;
-    color: #0f172a;
+    font-size: 1.05rem;
+    font-weight: 900;
+    color: #065f46;
     letter-spacing: -0.01em;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
 }
 
 .sticky-sub {
     font-size: 0.8rem;
-    color: #64748b;
-    font-weight: 500;
+    color: #059669;
+    font-weight: 600;
 }
 
 .sticky-call-action {
-    background: linear-gradient(135deg, var(--cta-color) 0%, #3b82f6 100%);
+    background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
     color: white;
-    width: 52px;
-    height: 52px;
+    width: 56px;
+    height: 56px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    animation: pulse-strong 2s infinite;
-    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+    animation: pulse-ultra-strong 1.5s infinite;
+    box-shadow: 0 4px 20px rgba(16, 185, 129, 0.6);
 }
 
-/* Animation pulse forte pour le sticky */
-@keyframes pulse-strong {
+/* Animation pulse TRÈS FORTE et VOYANTE */
+@keyframes pulse-ultra-strong {
     0% { 
-        box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.5);
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
         transform: scale(1);
     }
     50% {
-        box-shadow: 0 0 0 15px rgba(37, 99, 235, 0);
-        transform: scale(1.05);
+        box-shadow: 0 0 0 20px rgba(16, 185, 129, 0);
+        transform: scale(1.08);
     }
     100% { 
-        box-shadow: 0 0 0 0 rgba(37, 99, 235, 0);
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
         transform: scale(1);
     }
 }
@@ -287,9 +295,9 @@
 }
 
 @keyframes vibrate {
-    0%, 100% { transform: translateY(-2px) translateX(0); }
-    25% { transform: translateY(-2px) translateX(-1px); }
-    75% { transform: translateY(-2px) translateX(1px); }
+    0%, 100% { transform: translateY(-2px) translateX(0) scale(1.02); }
+    25% { transform: translateY(-2px) translateX(-2px) scale(1.02); }
+    75% { transform: translateY(-2px) translateX(2px) scale(1.02); }
 }
 
 /* Cacher le sticky sur desktop */
@@ -308,6 +316,32 @@
         -webkit-touch-callout: none;
     }
 }
+
+/* Ajout d'un badge "APPEL GRATUIT" flashant (optionnel) */
+.btn-call::after {
+    content: '';
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    width: 12px;
+    height: 12px;
+    background: #ef4444;
+    border-radius: 50%;
+    border: 2px solid white;
+    animation: badge-pulse 1s infinite;
+}
+
+@keyframes badge-pulse {
+    0%, 100% { 
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% { 
+        transform: scale(1.3);
+        opacity: 0.8;
+    }
+}
+
 
 
 html {
@@ -1861,6 +1895,7 @@ p {
     }
 
 }
+
 
 
 
