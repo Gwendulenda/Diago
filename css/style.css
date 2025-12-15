@@ -1991,6 +1991,101 @@ p {
     color: rgba(255,255,255,0.7);
 }
 
+/* ===================================
+   FIX LOGO HTML RESPONSIVE (FINAL)
+=================================== */
+
+/* Sécurité globale */
+* {
+    max-width: 100%;
+}
+
+/* HEADER */
+.header {
+    padding: 12px 0;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+}
+
+/* LIEN LOGO */
+.logo-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    max-width: calc(100% - 48px); /* place pour le burger */
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* LOGO HTML */
+.diago-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+/* ICON / SVG / IMG */
+.diago-logo .logo-icon,
+.diago-logo svg {
+    width: 40px;
+    height: auto;
+    flex-shrink: 0;
+}
+
+/* TEXTE LOGO */
+.diago-logo .logo-text {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.diago-logo .brand-name {
+    font-size: 22px;
+    line-height: 1.1;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.diago-logo .tagline {
+    font-size: 11px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* NAV DESKTOP */
+.nav {
+    display: flex;
+    align-items: center;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+    .nav {
+        display: none !important;
+    }
+
+    .logo-link {
+        max-width: calc(100% - 44px);
+    }
+
+    .diago-logo .logo-icon,
+    .dia
+
 
 
 
