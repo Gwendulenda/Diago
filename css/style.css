@@ -1897,7 +1897,9 @@ p {
 
 }
 
-/* LOGO DIAGO */
+/* =========================
+   LOGO DIAGO
+========================= */
 .diago-logo {
     display: flex;
     align-items: center;
@@ -1928,7 +1930,33 @@ p {
     white-space: nowrap;
 }
 
-/* HEADER */
+/* =========================
+   HEADER : LOGO À GAUCHE / NAV À DROITE
+========================= */
+.header-content {
+    display: flex;
+    align-items: center;
+}
+
+/* Logo ancré à gauche */
+.logo-link {
+    display: flex;
+    align-items: center;
+    margin-right: auto;          /* pousse la navigation à droite */
+    text-decoration: none;       /* supprime la ligne bleue */
+    color: inherit;
+}
+
+.logo-link:hover {
+    text-decoration: none;
+}
+
+/* Sécurité : aucun soulignement dans le logo */
+.logo-link * {
+    text-decoration: none;
+}
+
+/* Ajustement taille logo header */
 .header-logo .logo-icon {
     width: 44px;
 }
@@ -1937,7 +1965,18 @@ p {
     font-size: 24px;
 }
 
-/* FOOTER */
+/* =========================
+   NAVIGATION À DROITE
+========================= */
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+/* =========================
+   FOOTER
+========================= */
 .footer-logo .logo-icon {
     width: 50px;
 }
@@ -1949,36 +1988,6 @@ p {
 .footer-logo .tagline {
     color: rgba(255,255,255,0.7);
 }
-.header-content {
-    display: flex;
-    align-items: center;
-}
-
-/* Logo bien à gauche */
-.logo-link {
-    display: flex;
-    align-items: center;
-    margin-right: auto; /* pousse la navigation à droite */
-}
-
-.nav {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-}
-.logo-link {
-    text-decoration: none;   /* supprime le soulignement */
-    color: inherit;          /* empêche la couleur bleue */
-}
-
-.logo-link:hover {
-    text-decoration: none;
-}
-
-.logo-link * {
-    text-decoration: none;
-}
-
 
 
 
