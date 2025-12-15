@@ -1949,8 +1949,35 @@ p {
 .footer-logo .tagline {
     color: rgba(255,255,255,0.7);
 }
+.header-content {
+    display: flex;
+    align-items: center;
+}
 
+/* Logo bien à gauche */
+.logo-link {
+    display: flex;
+    align-items: center;
+    margin-right: auto; /* pousse la navigation à droite */
+}
 
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+.logo-link {
+    text-decoration: none;   /* supprime le soulignement */
+    color: inherit;          /* empêche la couleur bleue */
+}
+
+.logo-link:hover {
+    text-decoration: none;
+}
+
+.logo-link * {
+    text-decoration: none;
+}
 
 
 
