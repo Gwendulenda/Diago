@@ -498,6 +498,8 @@ p {
 .header-content {
     display: flex;
     align-items: center;
+   justify-content: space-between; /* Logo <--- Espace ---> Burger */
+    padding: 15px 0; /* Un peu d'aération */
 }
 
 .logo-link {
@@ -517,7 +519,7 @@ p {
 }
 
 .nav {
-    display: flex;
+    display: none;
     gap: 32px;
     align-items: center;
     color: grey;
@@ -534,7 +536,7 @@ p {
 }
 
 .mobile-menu-toggle {
-    display: none;
+    display: block;
     background: none;
     border: none;
     font-size: 1.5rem;
@@ -1988,6 +1990,7 @@ p {
 .footer-logo .tagline {
     color: rgba(255,255,255,0.7);
 }
+
 
 
 
