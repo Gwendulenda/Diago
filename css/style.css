@@ -1706,8 +1706,6 @@ p {
 
 /* Ajustements Responsive pour la page légale */
 @media (max-width: 768px) {
-   [class*="grid"] {
-        grid-template-columns: 1fr !important;
     .legal-content h2 {
         font-size: 1.5rem;
     }
@@ -1938,9 +1936,8 @@ p {
    HEADER : LOGO À GAUCHE / NAV À DROITE
 ========================= */
 .header-content {
-    display: flex;
+    display: flex-start;
     align-items: center;
-   justify-content: space-between;
 }
 
 /* Logo ancré à gauche */
@@ -1974,7 +1971,7 @@ p {
    NAVIGATION À DROITE
 ========================= */
 .nav {
-    display: none;
+    display: flex;
     align-items: center;
     gap: 24px;
 }
@@ -1993,8 +1990,6 @@ p {
 .footer-logo .tagline {
     color: rgba(255,255,255,0.7);
 }
-
-
 
 
 
