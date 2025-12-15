@@ -1936,7 +1936,7 @@ p {
    HEADER : LOGO À GAUCHE / NAV À DROITE
 ========================= */
 .header-content {
-    display: flex;
+    display: flex-start;
     align-items: center;
 }
 
@@ -1990,6 +1990,7 @@ p {
 .footer-logo .tagline {
     color: rgba(255,255,255,0.7);
 }
+
 
 
 
