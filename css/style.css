@@ -1942,7 +1942,7 @@ p {
 .logo-link {
     display: flex;
     align-items: center;
-    margin-right: auto;          /* pousse la navigation à droite */
+    margin-right: 60px;          /* pousse la navigation à droite */
     text-decoration: none;       /* supprime la ligne bleue */
     color: inherit;
 }
@@ -1988,6 +1988,7 @@ p {
 .footer-logo .tagline {
     color: rgba(255,255,255,0.7);
 }
+
 
 
 
