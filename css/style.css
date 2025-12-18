@@ -1909,7 +1909,7 @@ p {
 }
 
 .diago-logo .logo-icon {
-    width: 52px;
+    width: 48px;
     height: auto;
 }
 
@@ -1927,7 +1927,7 @@ p {
 }
 
 .diago-logo .tagline {
-    font-size: 11px;
+    font-size: 12px;
     color: #4A4A4A;
     white-space: nowrap;
 }
@@ -1960,7 +1960,7 @@ p {
 
 /* Ajustement taille logo header */
 .header-logo .logo-icon {
-    width: 52px;
+    width: 44px;
 }
 
 .header-logo .brand-name {
@@ -1980,7 +1980,7 @@ p {
    FOOTER
 ========================= */
 .footer-logo .logo-icon {
-    width: 52px;
+    width: 50px;
 }
 
 .footer-logo .brand-name {
@@ -2018,7 +2018,7 @@ p {
     align-items: center;
     gap: 10px;
     max-width: calc(100% - 48px); /* place pour le burger */
-    overflow: visible;
+    overflow: hidden;
     text-decoration: none;
     color: inherit;
 }
@@ -2029,13 +2029,13 @@ p {
     align-items: center;
     gap: 10px;
     max-width: 100%;
-    overflow: visible;
+    overflow: hidden;
 }
 
 /* ICON / SVG / IMG */
 .diago-logo .logo-icon,
 .diago-logo svg {
-    width: 52px;
+    width: 40px;
     height: auto;
     flex-shrink: 0;
 }
@@ -2044,22 +2044,22 @@ p {
 .diago-logo .logo-text {
     display: flex;
     flex-direction: column;
-    overflow: visible;
+    overflow: hidden;
 }
 
 .diago-logo .brand-name {
-    font-size: 22px;
+    font-size: 32px;
     line-height: 1.1;
     font-weight: 700;
     white-space: nowrap;
-    overflow: visible;
+    overflow: hidden;
     text-overflow: ellipsis;
 }
 
 .diago-logo .tagline {
     font-size: 11px;
     white-space: nowrap;
-    overflow: visible;
+    overflow: hidden;
     text-overflow: ellipsis;
 }
 
@@ -2085,10 +2085,6 @@ p {
 
     .diago-logo .logo-icon,
     .dia
-
-
-
-
 
 
 
