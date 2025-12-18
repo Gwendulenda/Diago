@@ -1920,14 +1920,14 @@ p {
 
 .diago-logo .brand-name {
     font-family: 'Montserrat', sans-serif;
-    font-size: 32px;
+    font-size: 36px;
     font-weight: 700;
     color: #0F3A5D;
     line-height: 1;
 }
 
 .diago-logo .tagline {
-    font-size: 12px;
+    font-size: 13px;
     color: #4A4A4A;
     white-space: nowrap;
 }
@@ -1964,7 +1964,7 @@ p {
 }
 
 .header-logo .brand-name {
-    font-size: 32px;
+    font-size: 36px;
 }
 
 /* =========================
@@ -2048,7 +2048,7 @@ p {
 }
 
 .diago-logo .brand-name {
-    font-size: 32px;
+    font-size: 36px;
     line-height: 1.1;
     font-weight: 700;
     white-space: nowrap;
@@ -2057,7 +2057,7 @@ p {
 }
 
 .diago-logo .tagline {
-    font-size: 11px;
+    font-size: 13px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -2085,6 +2085,7 @@ p {
 
     .diago-logo .logo-icon,
     .dia
+
 
 
 
