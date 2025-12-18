@@ -2018,7 +2018,7 @@ p {
     align-items: center;
     gap: 10px;
     max-width: calc(100% - 48px); /* place pour le burger */
-    overflow: hidden;
+    overflow: visible;
     text-decoration: none;
     color: inherit;
 }
@@ -2029,7 +2029,7 @@ p {
     align-items: center;
     gap: 10px;
     max-width: 100%;
-    overflow: hidden;
+    overflow: visible;
 }
 
 /* ICON / SVG / IMG */
@@ -2044,7 +2044,7 @@ p {
 .diago-logo .logo-text {
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .diago-logo .brand-name {
@@ -2052,14 +2052,14 @@ p {
     line-height: 1.1;
     font-weight: 700;
     white-space: nowrap;
-    overflow: hidden;
+    overflow: visible;
     text-overflow: ellipsis;
 }
 
 .diago-logo .tagline {
     font-size: 11px;
     white-space: nowrap;
-    overflow: hidden;
+    overflow: visible;
     text-overflow: ellipsis;
 }
 
@@ -2085,6 +2085,7 @@ p {
 
     .diago-logo .logo-icon,
     .dia
+
 
 
 
