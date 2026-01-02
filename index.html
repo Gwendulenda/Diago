@@ -673,6 +673,62 @@
             </div>
         </div>
     </section>
+    
+    <!-- Footer Section (Ajouté) -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; padding: 2rem 0; border-top: 1px solid #eee;">
+                <div class="footer-logo">
+                    <span class="brand-name" style="font-weight: 800; color: #0b4e85;">DIAGO</span>
+                </div>
+                <div class="footer-links">
+                    <a href="#" style="color: #666; text-decoration: none; margin-right: 15px;">Mentions Légales</a>
+                    <a href="#" style="color: #666; text-decoration: none;">Politique de Confidentialité</a>
+                </div>
+                <div class="footer-copyright" style="color: #999; font-size: 0.9em;">
+                    &copy; 2024 Diago. Tous droits réservés.
+                </div>
+            </div>
+        </div>
+    </footer>
 
+    <!-- Scripts pour le menu mobile (Ajouté) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const mobileMenu = document.querySelector('.mobile-menu');
+
+            if (mobileMenuToggle && mobileMenu) {
+                mobileMenuToggle.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('active');
+                    // Optionnel : Ajouter une classe active au menu mobile dans votre CSS (ex: display: block ou transform)
+                    
+                    // Gestion de l'icône
+                    const icon = this.querySelector('i');
+                    if (icon) {
+                        if (icon.classList.contains('fa-bars')) {
+                            icon.classList.remove('fa-bars');
+                            icon.classList.add('fa-times');
+                        } else {
+                            icon.classList.remove('fa-times');
+                            icon.classList.add('fa-bars');
+                        }
+                    }
+                });
+
+                // Fermer le menu au clic sur un lien
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.remove('active');
+                        const icon = mobileMenuToggle.querySelector('i');
+                        if (icon) {
+                            icon.classList.add('fa-bars');
+                            icon.classList.remove('fa-times');
+                        }
+                    });
+                });
+            }
+        });
+    </script>
 </body>
 </html>
