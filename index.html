@@ -483,7 +483,8 @@
     </section>
 
     <!-- FAQ Section -->
-    <section class="faq-section" itemscope itemtype="https://schema.org/FAQPage">
+    <!-- Ajout de l'ID 'faq' pour que le lien du footer fonctionne -->
+    <section id="faq" class="faq-section" itemscope itemtype="https://schema.org/FAQPage">
         <div class="container">
             <div class="section-header">
                 <i class="fas fa-circle-question" aria-hidden="true"></i>
@@ -721,6 +722,7 @@
                     <h4>Informations</h4>
                     <ul>
                         <li><a href="#contact">Contact</a></li>
+                        <!-- Le lien FAQ fonctionnera maintenant grâce à l'ajout de l'ID #faq -->
                         <li><a href="#faq">FAQ</a></li>
                         <li><a href="mentions-legales.html">Mentions légales</a></li>
                     </ul>
@@ -740,15 +742,70 @@
         </div>
     </footer>
 
-    <!-- Scripts pour le menu mobile (Ajouté) -->
+    <!-- RESTAURATION DES SCRIPTS FONCTIONNELS -->
+    
+    <!-- Restauration du fichier JS principal (Formulaire Google Sheet, etc.) -->
+    <script src="js/main.js"></script>
+
+    <!-- Restauration du bouton Sticky Mobile (Appel) -->
+    <div id="sticky-cta-mobile" class="sticky-mobile-wrapper">
+        <a href="tel:+33600000000">
+            <div class="sticky-btn-content">
+                <div class="sticky-text">
+                    <span class="sticky-label">Nous contacter</span>
+                    <span class="sticky-sub">☎️ Appel gratuit</span>
+                </div>
+                <div class="sticky-call-action">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="white"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.49-5.15-3.8-6.62-6.65l1.97-1.6c.26-.29.35-.69.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3.25 3 3.25 3 3.81c0 8.61 7.43 16.5 16.5 16.5.56 0 1.11-.45 1.11-.99v-3.85c0-.54-.45-.99-.99-.99z"/></svg>
+                </div>
+            </div>
+        </a>
+    </div>
+                            
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // --- GESTION DU MENU MOBILE ---
+            // --- GESTION DU BOUTON STICKY (Restauré) ---
+            const stickyBtn = document.getElementById('sticky-cta-mobile');
+            
+            // Fonction pour gérer l'affichage au scroll
+            function handleScroll() {
+                // Si on a scrollé plus de 150px
+                if (window.scrollY > 150) {
+                    if(stickyBtn) stickyBtn.classList.add('is-visible');
+                } else {
+                    if(stickyBtn) stickyBtn.classList.remove('is-visible');
+                }
+            }
+
+            // Écouteur d'événement optimisé
+            let ticking = false;
+            window.addEventListener('scroll', function() {
+                if (!ticking) {
+                    window.requestAnimationFrame(function() {
+                        handleScroll();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            });
+            
+            // Vérification initiale
+            handleScroll();
+
+            /* Note: La gestion du menu mobile et de la FAQ est maintenant confiée à js/main.js 
+               ou, si ce fichier ne les gère pas, les voici en fallback ci-dessous.
+               Si js/main.js s'en occupe déjà, ce code peut être redondant mais inoffensif. */
+
+            // --- GESTION DU MENU MOBILE (Secours) ---
             const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
             const mobileMenu = document.querySelector('.mobile-menu');
 
             if (mobileMenuToggle && mobileMenu) {
-                mobileMenuToggle.addEventListener('click', function() {
+                // On clone le noeud pour éviter les doublons d'écouteurs si main.js le fait déjà
+                const newBtn = mobileMenuToggle.cloneNode(true);
+                mobileMenuToggle.parentNode.replaceChild(newBtn, mobileMenuToggle);
+                
+                newBtn.addEventListener('click', function() {
                     mobileMenu.classList.toggle('active');
                     const icon = this.querySelector('i');
                     if (icon) {
@@ -765,84 +822,12 @@
                 mobileMenu.querySelectorAll('a').forEach(link => {
                     link.addEventListener('click', () => {
                         mobileMenu.classList.remove('active');
-                        const icon = mobileMenuToggle.querySelector('i');
+                        const icon = newBtn.querySelector('i');
                         if (icon) {
                             icon.classList.add('fa-bars');
                             icon.classList.remove('fa-times');
                         }
                     });
-                });
-            }
-
-            // --- GESTION DE LA FAQ ---
-            const faqQuestions = document.querySelectorAll('.faq-question');
-            
-            faqQuestions.forEach(question => {
-                question.addEventListener('click', () => {
-                    // Sélectionne l'élément parent (faq-item)
-                    const item = question.parentElement;
-                    const isActive = item.classList.contains('active');
-                    
-                    // Ferme toutes les autres questions (accordéon strict)
-                    document.querySelectorAll('.faq-item').forEach(i => {
-                        i.classList.remove('active');
-                        // Réinitialise l'icône
-                        const icon = i.querySelector('.faq-question i');
-                        if(icon) icon.style.transform = 'rotate(0deg)';
-                    });
-
-                    // Si l'élément n'était pas actif, on l'ouvre
-                    if (!isActive) {
-                        item.classList.add('active');
-                        // Tourne l'icône
-                        const icon = question.querySelector('i');
-                        if(icon) icon.style.transform = 'rotate(90deg)';
-                    }
-                });
-            });
-
-            // --- GESTION DU FORMULAIRE DE CONTACT ---
-            const contactForm = document.getElementById('contactForm');
-            const formMessage = document.getElementById('formMessage');
-
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault(); // Empêche le rechargement de la page
-                    
-                    // Simulation d'envoi (feedback visuel)
-                    const submitBtn = this.querySelector('button[type="submit"]');
-                    const originalBtnText = submitBtn.innerHTML;
-                    
-                    // État de chargement
-                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
-                    submitBtn.disabled = true;
-                    submitBtn.style.opacity = '0.7';
-
-                    // Simule un délai réseau de 1.5 secondes
-                    setTimeout(() => {
-                        // État de succès
-                        submitBtn.innerHTML = '<i class="fas fa-check"></i> Envoyé !';
-                        submitBtn.style.backgroundColor = '#4ecdc4'; // Couleur success (teal)
-                        
-                        // Affiche le message de confirmation
-                        formMessage.innerHTML = `
-                            <div style="background-color: #d4edda; color: #155724; padding: 15px; border-radius: 5px; border: 1px solid #c3e6cb; margin-top: 15px;">
-                                <i class="fas fa-check-circle"></i> <strong>Merci !</strong> Votre demande a bien été reçue. Nous vous recontactons sous 24h.
-                            </div>
-                        `;
-                        formMessage.style.display = 'block';
-                        
-                        // Réinitialise le formulaire
-                        contactForm.reset();
-
-                        // Remet le bouton à son état initial après 3 secondes
-                        setTimeout(() => {
-                            submitBtn.innerHTML = originalBtnText;
-                            submitBtn.disabled = false;
-                            submitBtn.style.opacity = '1';
-                            submitBtn.style.backgroundColor = '';
-                        }, 3000);
-                    }, 1500);
                 });
             }
         });
