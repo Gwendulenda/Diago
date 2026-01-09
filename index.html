@@ -48,7 +48,6 @@
       "name": "DIAGO - Diagnostic Humidité Indépendant",
       "image": "https://gwendulenda.github.io/Diago/logo.png",
       "url": "https://gwendulenda.github.io/Diago/",
-      "telephone": "+33600000000",
       "address": {
         "@type": "PostalAddress",
         "addressRegion": "Île-de-France",
@@ -126,7 +125,7 @@
                 <nav class="nav" role="navigation">
                     <a href="#prestations">Prestations</a>
                     <a href="#methode">Méthodologie</a>
-                    <a href="tel:+33600000000" class="btn-call header-cta" aria-label="Appeler gratuitement">
+                    <a href="#" id="btn-appel-header" class="btn-call header-cta" aria-label="Appeler gratuitement">
                         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.49-5.15-3.8-6.62-6.65l1.97-1.6c.26-.29.35-.69.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3.25 3 3.25 3 3.81c0 8.61 7.43 16.5 16.5 16.5.56 0 1.11-.45 1.11-.99v-3.85c0-.54-.45-.99-.99-.99z"/></svg>
                         <span>Appeler</span>
                     </a>
@@ -592,7 +591,7 @@
 
                 <div class="pre-form-cta-container">
                     <h3>Besoin d'une réponse immédiate ?</h3>
-                    <a href="tel:+33600000000" class="btn-call form-cta-big">
+                    <a href="#" id="btn-appel-bas" class="btn-call form-cta-big">
                         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.49-5.15-3.8-6.62-6.65l1.97-1.6c.26-.29.35-.69.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3.25 3 3.25 3 3.81c0 8.61 7.43 16.5 16.5 16.5.56 0 1.11-.45 1.11-.99v-3.85c0-.54-.45-.99-.99-.99z"/></svg>
                         📞 Appel gratuit — Réponse immédiate
                     </a>
@@ -749,7 +748,7 @@
 
     <!-- Restauration du bouton Sticky Mobile (Appel) -->
     <div id="sticky-cta-mobile" class="sticky-mobile-wrapper">
-        <a href="tel:+33600000000">
+        <a href="#">
             <div class="sticky-btn-content">
                 <div class="sticky-text">
                     <span class="sticky-label">Nous contacter</span>
@@ -796,5 +795,43 @@
             // pour éviter tout conflit de double déclaration ou de suppression d'écouteurs.
         });
     </script>
+    
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // --- VOTRE VRAI NUMÉRO ICI (Découpé pour tromper les robots) ---
+    // 
+    const part1 = "06"; 
+    const part2 = "82"; 
+    const part3 = "53"; 
+    const part4 = "39"; 
+    const part5 = "50";
+    
+    // On reconstruit le numéro complet
+    const numeroComplet = part1 + part2 + part3 + part4 + part5;
+
+    // Fonction qui lance l'appel
+    function lancerAppel(e) {
+        e.preventDefault(); // Empêche le lien # de s'activer
+        window.location.href = 'tel:' + numeroComplet;
+    }
+
+    // 1. Protection du bouton du HAUT
+    const btnHeader = document.getElementById('btn-appel-header');
+    if(btnHeader) {
+        btnHeader.addEventListener('click', lancerAppel);
+    }
+
+    // 2. Protection du bouton du BAS
+    const btnBas = document.getElementById('btn-appel-bas');
+    if(btnBas) {
+        btnBas.addEventListener('click', lancerAppel);
+    }
+
+    // 3. Protection du bouton STICKY MOBILE (Nouveau)
+        const btnMobile = document.getElementById('btn-appel-mobile');
+        if(btnMobile) btnMobile.addEventListener('click', lancerAppel);
+});
+</script>
+    
 </body>
 </html>
