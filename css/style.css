@@ -2087,6 +2087,29 @@ p {
     .dia
 
 
+/* =========================
+   CORRECTIF MOBILE LOGO
+========================= */
+@media (max-width: 768px) {
+    
+    /* 1. On autorise le slogan à passer à la ligne */
+    .diago-logo .tagline {
+        white-space: normal;      /* Annule le "nowrap" qui bloquait le texte */
+        line-height: 1.3;         /* Aère un peu les deux lignes */
+        max-width: 220px;         /* Force le texte à ne pas être trop large */
+        font-size: 12px;          /* Légère réduction pour que ça rentre mieux */
+    }
+
+    /* 2. (Optionnel) On réduit un peu le titre "DIAGO" sur mobile */
+    .diago-logo .brand-name {
+        font-size: 28px;          /* Passe de 36px à 28px sur mobile */
+    }
+
+    /* 3. Ajustement de l'icône pour garder l'équilibre */
+    .diago-logo .logo-icon {
+        width: 40px;              /* Passe de 48px à 40px */
+    }
+}
 
 
 
