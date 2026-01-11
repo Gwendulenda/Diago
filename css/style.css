@@ -2070,44 +2070,46 @@ p {
 }
 
 /* =========================
-   MOBILE
+   MOBILE & FIX LOGO
 ========================= */
-
 @media (max-width: 768px) {
 
+    /* 1. Masquer la navigation desktop */
     .nav {
         display: none !important;
     }
 
+    /* 2. Gérer l'espace du lien logo pour ne pas chevaucher le bouton burger */
     .logo-link {
-        max-width: calc(100% - 44px);
+        max-width: calc(100% - 50px); /* Laisse 50px pour le bouton burger */
+        display: flex;
+        overflow: hidden; /* Empêche tout débordement */
     }
 
-    .diago-logo .logo-icon,
-    .dia
+    /* 3. Permettre au texte de rétrécir (C'est le secret pour que le saut de ligne marche) */
+    .diago-logo .logo-text {
+        min-width: 0; /* INDISPENSABLE : autorise le conteneur à être plus petit que son contenu */
+        flex: 1;      /* Prend l'espace restant */
+    }
 
-
-/* =========================
-   CORRECTIF MOBILE LOGO
-========================= */
-@media (max-width: 768px) {
-    
-    /* 1. On autorise le slogan à passer à la ligne */
+    /* 4. Forcer le saut de ligne de la phrase */
     .diago-logo .tagline {
-        white-space: normal;      /* Annule le "nowrap" qui bloquait le texte */
-        line-height: 1.3;         /* Aère un peu les deux lignes */
-        max-width: 220px;         /* Force le texte à ne pas être trop large */
-        font-size: 12px;          /* Légère réduction pour que ça rentre mieux */
+        white-space: normal !important; /* Force le passage à la ligne */
+        display: block;                 /* S'assure qu'il se comporte comme un bloc */
+        line-height: 1.2;               /* Resserre les lignes */
+        font-size: 11px;                /* Taille lisible sur mobile */
+        margin-top: 2px;
     }
 
-    /* 2. (Optionnel) On réduit un peu le titre "DIAGO" sur mobile */
+    /* 5. Ajuster la taille du titre DIAGO */
     .diago-logo .brand-name {
-        font-size: 28px;          /* Passe de 36px à 28px sur mobile */
+        font-size: 24px; /* Un peu plus petit pour laisser de la place */
     }
 
-    /* 3. Ajustement de l'icône pour garder l'équilibre */
+    /* 6. Ajuster l'icône */
     .diago-logo .logo-icon {
-        width: 40px;              /* Passe de 48px à 40px */
+        width: 35px;       /* Réduit la taille de l'icône */
+        min-width: 35px;   /* Empêche l'icône de s'écraser */
     }
 }
 
