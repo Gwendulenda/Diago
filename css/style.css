@@ -2070,7 +2070,7 @@ p {
 }
 
 /* =========================
-   MOBILE & FIX LOGO
+   MOBILE & FIX LOGO (CORRIGÉ)
 ========================= */
 @media (max-width: 768px) {
 
@@ -2079,40 +2079,58 @@ p {
         display: none !important;
     }
 
-    /* 2. Gérer l'espace du lien logo pour ne pas chevaucher le bouton burger */
+    /* 2. HEADER : Gestion de l'espace */
+    .header-content {
+        align-items: center; /* Centre verticalement le burger et le logo */
+        padding: 10px 0;    /* Un peu moins de padding pour gagner de la place */
+    }
+
+    /* 3. LIEN LOGO : Doit être flexible */
     .logo-link {
-        max-width: calc(100% - 50px); /* Laisse 50px pour le bouton burger */
-        display: flex;
-        overflow: hidden; /* Empêche tout débordement */
+        flex: 1;                     /* Prend toute la place disponible */
+        max-width: calc(100% - 60px); /* Laisse 60px pour le bouton burger à droite */
+        height: auto;                /* Laisse la hauteur s'adapter au contenu */
+        overflow: visible !important; /* IMPORTANT : permet au texte de dépasser si besoin */
     }
 
-    /* 3. Permettre au texte de rétrécir (C'est le secret pour que le saut de ligne marche) */
+    /* 4. CONTENEUR TEXTE : Autoriser le redimensionnement */
     .diago-logo .logo-text {
-        min-width: 0; /* INDISPENSABLE : autorise le conteneur à être plus petit que son contenu */
-        flex: 1;      /* Prend l'espace restant */
+        min-width: 0;               /* Permet au flexbox de rétrécir si besoin */
+        flex: 1;
+        overflow: visible !important; /* IMPORTANT : ne pas couper le texte qui dépasse */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
-    /* 4. Forcer le saut de ligne de la phrase */
+    /* 5. PHRASE SOUS LE LOGO (Tagline) */
     .diago-logo .tagline {
-        white-space: normal !important; /* Force le passage à la ligne */
-        display: block;                 /* S'assure qu'il se comporte comme un bloc */
-        line-height: 1.2;               /* Resserre les lignes */
-        font-size: 11px;                /* Taille lisible sur mobile */
-        margin-top: 2px;
+        white-space: normal !important;  /* FORCE le retour à la ligne */
+        overflow: visible !important;    /* Annule le masquage du texte */
+        text-overflow: clip !important;  /* Enlève les "..." s'il y en a */
+        display: block;
+        line-height: 1.3;                /* Espace entre les lignes pour la lisibilité */
+        font-size: 11px;                 /* Taille adaptée au mobile */
+        margin-top: 4px;
+        height: auto !important;         /* Force la hauteur automatique */
+        color: #4A4A4A;
     }
 
-    /* 5. Ajuster la taille du titre DIAGO */
+    /* 6. TITRE DIAGO */
     .diago-logo .brand-name {
-        font-size: 24px; /* Un peu plus petit pour laisser de la place */
+        font-size: 22px;     /* Légèrement plus petit pour éviter la saturation */
+        line-height: 1;
+        margin-bottom: 0;
     }
 
-    /* 6. Ajuster l'icône */
-    .diago-logo .logo-icon {
-        width: 35px;       /* Réduit la taille de l'icône */
-        min-width: 35px;   /* Empêche l'icône de s'écraser */
+    /* 7. ICÔNE LOGO */
+    .diago-logo .logo-icon,
+    .diago-logo svg {
+        width: 32px;         /* Réduit l'icône pour laisser place au texte */
+        min-width: 32px;
+        height: auto;
     }
 }
-
 
 
 
