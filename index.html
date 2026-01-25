@@ -2,15 +2,25 @@
 <html lang="fr-FR">
 <head>
 
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17902488856"></script>
-<script>
+    <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
+  // 1. Définir le consentement par défaut sur "REFUSÉ" (Important pour Google Ads)
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied',
+    'wait_for_update': 500
+  });
+  
+  // 2. Charger le script Google
+  gtag('js', new Date());
   gtag('config', 'AW-17902488856');
 </script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17902488856"></script>
 
     <!-- Event snippet for Demande de devis conversion page
 In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
@@ -862,6 +872,101 @@ document.addEventListener('DOMContentLoaded', function() {
         const btnMobile = document.getElementById('btn-appel-mobile');
         if(btnMobile) btnMobile.addEventListener('click', lancerAppel);
 });
+</script>
+
+    <style>
+  #cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #2c3e50; /* Bleu foncé pro */
+    color: #ffffff;
+    padding: 15px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+    z-index: 9999;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    display: none; /* Caché par défaut */
+  }
+  
+  @media (min-width: 768px) {
+    #cookie-banner {
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 15px 50px;
+    }
+  }
+
+  .cookie-buttons {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+  }
+  
+  @media (min-width: 768px) {
+    .cookie-buttons { margin-top: 0; }
+  }
+
+  .btn-cookie {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  #btn-accept { background-color: #27ae60; color: white; } /* Vert */
+  #btn-deny { background-color: #7f8c8d; color: white; } /* Gris */
+</style>
+
+<div id="cookie-banner">
+  <div>
+    Nous utilisons des cookies pour mesurer l'efficacité de nos campagnes publicitaires.
+    <a href="/mentions-legales.html" style="color: #bdc3c7; text-decoration: underline;">En savoir plus</a>.
+  </div>
+  <div class="cookie-buttons">
+    <button id="btn-deny" class="btn-cookie">Refuser</button>
+    <button id="btn-accept" class="btn-cookie">Accepter</button>
+  </div>
+</div>
+
+<script>
+  (function() {
+    var banner = document.getElementById('cookie-banner');
+    var consent = localStorage.getItem('cookie_consent');
+
+    // Si pas de choix fait, on affiche la bannière
+    if (!consent) {
+      banner.style.display = 'flex';
+    }
+
+    // Fonction si accepté
+    document.getElementById('btn-accept').addEventListener('click', function() {
+      // 1. On dit à Google que c'est OK (Mise à jour du consentement)
+      gtag('consent', 'update', {
+        'ad_storage': 'granted',
+        'ad_user_data': 'granted',
+        'ad_personalization': 'granted',
+        'analytics_storage': 'granted'
+      });
+      
+      // 2. On sauvegarde le choix et on cache la bannière
+      localStorage.setItem('cookie_consent', 'granted');
+      banner.style.display = 'none';
+    });
+
+    // Fonction si refusé
+    document.getElementById('btn-deny').addEventListener('click', function() {
+      // Pas besoin de mettre à jour gtag, il est "denied" par défaut dans le head
+      localStorage.setItem('cookie_consent', 'denied');
+      banner.style.display = 'none';
+    });
+  })();
 </script>
     
 </body>
