@@ -159,9 +159,11 @@ if (contactForm) {
                 body: JSON.stringify(formData)
             });
 
+            // On vide le formulaire immédiatement après l'appel fetch réussi
+            contactForm.reset();
+            
             // Succès
             showMessage('success', '✅ Demande reçue ! Un expert va vous rappeler sous 24h.');
-            contactForm.reset();
 
         } catch (error) {
             console.error('Form submission error:', error);
@@ -376,6 +378,7 @@ console.log('%c🏠 Diagnostic Humidité Pro', 'color: #004d99; font-size: 24px;
 console.log('%cExpertise indépendante en diagnostic d\'humidité', 'color: #666; font-size: 14px;');
 
 console.log('%cVal-de-Marne (94) et Seine-et-Marne (77)', 'color: #666; font-size: 14px;');
+
 
 
 
