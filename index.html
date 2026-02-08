@@ -658,78 +658,79 @@ function gtag_report_conversion(url) {
                     </a>
                 </div>
 
-              <!-- COPIEZ CE CODE CI-DESSOUS POUR VOTRE SITE -->
-<div class="contact-form-wrapper">
-    <form id="contactForm" class="contact-form">
-        <input type="hidden" name="_token" value="123">
+              <div class="contact-form-wrapper">
+                    <form id="contactForm" class="contact-form">
+                        <input type="hidden" name="_token" value="123">
+                        <div class="form-group">
+                            <label for="profile">Vous êtes :</label>
+                            <select id="profile" name="profile" required>
+                                <option value="">Sélectionnez votre profil</option>
+                                <option value="proprietaire">Propriétaire</option>
+                                <option value="acheteur">Acheteur (avant achat)</option>
+                                <option value="professionnel">Professionnel (agence, architecte, syndic)</option>
+                                <option value="autre">Autre</option>
+                            </select>
+                        </div>
 
-        <!-- CHAMPS CACHÉS (Hidden) pour compatibilité avec votre ancien JS -->
-        <!-- Ces champs sont remplis automatiquement pour éviter les erreurs "Champ manquant" -->
-        <input type="hidden" id="nom" name="nom" value="."> <!-- Valeur par défaut pour éviter l'erreur -->
-        <input type="hidden" id="ville" name="ville" value=".">
-        <input type="hidden" id="profile" name="profile" value="autre">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nom">Nom *</label>
+                                <input type="text" id="nom" name="nom" required autocomplete="family-name">
+                            </div>
+                            <div class="form-group">
+                                <label for="prenom">Prénom *</label>
+                                <input type="text" id="prenom" name="prenom" required autocomplete="given-name">
+                            </div>
+                        </div>
 
-        <!-- BLOC 1 : Champs OBLIGATOIRES -->
-        <div class="form-group">
-            <label for="prenom">Prénom *</label>
-            <input type="text" id="prenom" name="prenom" required autocomplete="given-name">
-        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" name="email" required autocomplete="email">
+                            </div>
+                            <div class="form-group">
+                                <label for="telephone">Téléphone *</label>
+                                <input type="tel" id="telephone" name="telephone" required autocomplete="tel">
+                            </div>
+                        </div>
 
-        <div class="form-row">
-            <div class="form-group">
-                <label for="telephone">Téléphone *</label>
-                <input type="tel" id="telephone" name="telephone" required autocomplete="tel">
-            </div>
-            <div class="form-group">
-                <label for="codePostal">Code postal *</label>
-                <input type="text" id="codePostal" name="codePostal" pattern="[0-9]{5}" required autocomplete="postal-code">
-            </div>
-        </div>
+                        <div class="form-group">
+                            <label for="ville">Ville d'intervention *</label>
+                            <input type="text" id="ville" name="ville" placeholder="Ex: Créteil, Melun..." required autocomplete="address-level2">
+                        </div>
 
-        <!-- BLOC 2 : Champs OPTIONNELS -->
-        <div class="form-group">
-            <label for="email">Email (facultatif)</label>
-            <input type="email" id="email" name="email" autocomplete="email">
-        </div>
+                        <div class="form-group">
+                            <label for="codePostal">Code postal *</label>
+                            <input type="text" id="codePostal" name="codePostal" pattern="[0-9]{5}" placeholder="94000" required autocomplete="postal-code">
+                        </div>
 
-        <div class="form-group">
-            <label for="message">Message (facultatif)</label>
-            <textarea id="message" name="message" rows="3" placeholder="Ex : Moisissures dans une chambre, mur humide, odeur..."></textarea>
-        </div>
+                        <div class="form-group">
+                            <label for="message">Décrivez brièvement votre problématique *</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Ex: Moisissures dans la chambre, taches d'humidité au sous-sol..." required></textarea>
+                        </div>
 
-        <!-- BLOC 3 : Cases à cocher -->
-        <div class="form-group checkbox-group">
-            <label class="checkbox-label" style="background-color: #fff0f0; padding: 10px; border-radius: 5px; border: 1px solid #ffcccc;">
-                <input type="checkbox" id="urgence" name="urgence">
-                <span><strong>Situation urgente</strong> (intervention sous 48h)</span>
-            </label>
-        </div>
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="urgence" name="urgence">
+                                <span>Situation urgente (intervention souhaitée sous 48h)</span>
+                            </label>
+                        </div>
 
-        <div class="form-group checkbox-group">
-            <label class="checkbox-label">
-                <input type="checkbox" id="rgpd" name="rgpd" required>
-                <span>J’accepte d’être recontacté *</span>
-            </label>
-        </div>
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="rgpd" name="rgpd" required>
+                                <span>J'accepte que mes données soient utilisées pour me recontacter *</span>
+                            </label>
+                        </div>
 
-        <!-- BLOC 4 : Texte de réassurance -->
-        <div class="reassurance-text" style="text-align: center; margin: 20px 0 15px;">
-            <p style="margin: 0 0 5px; font-weight: bold;">Contact sans engagement</p>
-            <p style="margin: 0; font-size: 0.9em; color: #666;">
-                Nous vous rappelons sous 24h.<br>
-                Les demandes sont traitées dès le jour ouvré suivant.
-            </p>
-        </div>
+                        <button type="submit" class="btn-submit">
+                            <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                            Envoyer ma demande
+                        </button>
 
-        <button type="submit" class="btn-submit">
-            <i class="fas fa-phone" aria-hidden="true" style="margin-right: 8px;"></i>
-            Être rappelé par un expert
-        </button>
-
-        <div id="formMessage" class="form-message"></div>
-    </form>
-</div>
-
+                        <div id="formMessage" class="form-message"></div>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
