@@ -2163,7 +2163,7 @@ p {
 
 /* Style spécifique pour le bouton Expert */
 .btn-expert {
-    background: linear-gradient(135deg, #28a745 0%, #218838 100%); /* Vert conversion */
+    background: #ef4444; /* Vert conversion */
     font-size: 1.2rem;
     padding: 18px 20px;
     text-transform: uppercase;
@@ -2195,6 +2195,7 @@ p {
         padding: 15px;
     }
 }
+
 
 
 
