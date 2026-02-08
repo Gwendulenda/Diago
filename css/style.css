@@ -2132,6 +2132,69 @@ p {
     }
 }
 
+/* --- NOUVEAUX STYLES FORMULAIRE SIMPLIFIÉ --- */
+
+/* Bloc de réassurance au dessus du formulaire */
+.reassurance-header {
+    text-align: center;
+    background-color: #f0fdf4; /* Vert très pâle apaisant */
+    border: 2px solid #28a745;
+    border-radius: var(--radius-md);
+    padding: 20px;
+    margin-bottom: 25px;
+}
+
+.reassurance-header h4 {
+    color: #155724;
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.reassurance-header p {
+    color: #333;
+    font-size: 0.95rem;
+    margin: 0;
+    line-height: 1.4;
+    font-weight: 500;
+}
+
+/* Style spécifique pour le bouton Expert */
+.btn-expert {
+    background: linear-gradient(135deg, #28a745 0%, #218838 100%); /* Vert conversion */
+    font-size: 1.2rem;
+    padding: 18px 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4);
+    font-weight: 800;
+}
+
+.btn-expert:hover {
+    background: linear-gradient(135deg, #218838 0%, #1e7e34 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(40, 167, 69, 0.5);
+}
+
+.bg-highlight {
+    background-color: #fff3cd; /* Fond jaune pâle pour l'urgence */
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+}
+
+/* Ajustement mobile pour le formulaire */
+@media (max-width: 480px) {
+    .contact-form-wrapper {
+        padding: 20px 15px;
+    }
+    .btn-expert {
+        font-size: 1rem;
+        padding: 15px;
+    }
+}
 
 
 
