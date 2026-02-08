@@ -162,23 +162,14 @@ if (contactForm) {
             // On vide le formulaire immédiatement après l'appel fetch réussi
             contactForm.reset();
             
-            // Succès
+            // On affiche le message de succès
             showMessage('success', '✅ Demande reçue ! Un expert va vous rappeler sous 24h.');
-
-       //  MODIFICATION DU BOUTON APRÈS ENVOI RÉUSSI
-            submitButton.innerHTML = '✅ Demande transmise'; // Change le texte
-            submitButton.style.backgroundColor = '#28a745';   // Change la couleur en vert (optionnel)
-            submitButton.style.cursor = 'not-allowed';        // Change le curseur
-            submitButton.disabled = true;                     // Bloque définitivement le bouton
-            
-            // On empêche le bloc "finally" de réactiver ce bouton précis
-            return; 
 
         } catch (error) {
             console.error('Form submission error:', error);
             showMessage('error', '❌ Erreur technique. Merci de nous contacter directement par téléphone.');
-            
-            // En cas d'erreur, on réactive le bouton pour permettre de réessayer
+        } finally {
+            // Réactivation du bouton
             submitButton.disabled = false;
             submitButton.innerHTML = originalButtonText;
         }
@@ -387,6 +378,7 @@ console.log('%c🏠 Diagnostic Humidité Pro', 'color: #004d99; font-size: 24px;
 console.log('%cExpertise indépendante en diagnostic d\'humidité', 'color: #666; font-size: 14px;');
 
 console.log('%cVal-de-Marne (94) et Seine-et-Marne (77)', 'color: #666; font-size: 14px;');
+
 
 
 
