@@ -97,29 +97,31 @@ if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         
-        // Get form data
+        // Récupération des données
+        // Note: On envoie des chaines vides ("") pour les champs supprimés visuellement
+        // afin de maintenir la compatibilité avec votre Google Sheet actuel.
         const formData = {
-            profile: document.getElementById('profile').value,
-            nom: document.getElementById('nom').value,
+            profile: "Non précisé", // Champ supprimé du visuel
+            nom: "",                // Champ supprimé du visuel
             prenom: document.getElementById('prenom').value,
-            email: document.getElementById('email').value,
-            telephone: document.getElementById('telephone').value,
-            ville: document.getElementById('ville').value,
+            ville: "",              // Champ supprimé du visuel
             codePostal: document.getElementById('codePostal').value,
-            message: document.getElementById('message').value,
+            telephone: document.getElementById('telephone').value,
+            email: document.getElementById('email').value, // Maintenant facultatif
+            message: document.getElementById('message').value, // Maintenant facultatif
             urgence: document.getElementById('urgence').checked,
             rgpd: document.getElementById('rgpd').checked,
             dateSubmission: new Date().toISOString()
         };
         
-        // Validate email format
+        // 1. Validation Email (UNIQUEMENT si rempli)
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(formData.email)) {
-            showMessage('error', '⚠️ Veuillez entrer une adresse email valide.');
+        if (formData.email && formData.email.length > 0 && !emailRegex.test(formData.email)) {
+            showMessage('error', '⚠️ L\'adresse email saisie ne semble pas valide.');
             return;
         }
         
-        // Validate phone format (10 digits)
+        // 2. Validation Téléphone (Toujours obligatoire)
         const phoneRegex = /^[0-9]{10}$/;
         const phoneClean = formData.telephone.replace(/\s/g, '');
         if (!phoneRegex.test(phoneClean)) {
@@ -127,13 +129,20 @@ if (contactForm) {
             return;
         }
         
-        // Check RGPD consent
+        // 3. Validation Code Postal (Toujours obligatoire)
+        const zipRegex = /^[0-9]{5}$/;
+        if (!zipRegex.test(formData.codePostal)) {
+            showMessage('error', '⚠️ Code postal invalide (5 chiffres requis).');
+            return;
+        }
+
+        // 4. Validation RGPD
         if (!formData.rgpd) {
-            showMessage('error', '⚠️ Vous devez accepter que vos données soient utilisées pour vous recontacter.');
+            showMessage('error', '⚠️ Vous devez accepter d\'être recontacté.');
             return;
         }
         
-        // Disable submit button during submission
+        // Désactivation du bouton pendant l'envoi
         const submitButton = contactForm.querySelector('.btn-submit');
         const originalButtonText = submitButton.innerHTML;
         submitButton.disabled = true;
@@ -141,56 +150,31 @@ if (contactForm) {
         
         try {
             // Envoi vers Google Apps Script
-            const response = await fetch("https://script.google.com/macros/s/AKfycbzCZOWJeQX4k8F7PRPuVAVcX3lO2GFOVjIPulA0B8JAHan9bFruhaaKMAcaXXJr6VwOSA/exec", {
+            await fetch("https://script.google.com/macros/s/AKfycbzCZOWJeQX4k8F7PRPuVAVcX3lO2GFOVjIPulA0B8JAHan9bFruhaaKMAcaXXJr6VwOSA/exec", {
                 method: 'POST',
-                mode: 'no-cors', // Important pour éviter les erreurs CORS
+                mode: 'no-cors',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(formData)
             });
 
-            // Avec mode: 'no-cors', on ne peut pas lire la réponse
-            // On suppose que ça a fonctionné
-            showMessage('success', '✅ Merci pour votre demande ! Nous vous recontacterons sous 24h pour échanger sur votre situation et planifier l\'intervention.');
-            
-            // Reset form
-            contactForm.reset();
-
-            // Afficher message de succès
-            showMessage('success', '✅ Merci pour votre demande ! Nous vous recontacterons sous 24h pour échanger sur votre situation et planifier l\'intervention.');
-
-            // Reset form
+            // Succès
+            showMessage('success', '✅ Demande reçue ! Un expert va vous rappeler sous 24h.');
             contactForm.reset();
 
         } catch (error) {
             console.error('Form submission error:', error);
-            showMessage('error', '❌ Une erreur est survenue lors de l\'envoi de votre demande. Veuillez réessayer ou nous contacter directement par téléphone.');
+            showMessage('error', '❌ Erreur technique. Merci de nous contacter directement par téléphone.');
         } finally {
-            // Re-enable submit button
+            // Réactivation du bouton
             submitButton.disabled = false;
             submitButton.innerHTML = originalButtonText;
         }
     });
 }
-
-// Function to display form messages
-function showMessage(type, message) {
-    formMessage.className = 'form-message ' + type;
-    formMessage.textContent = message;
-    formMessage.style.display = 'block';
-    
-    // Scroll to message
-    formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    
-    // Auto-hide success messages after 10 seconds
-    if (type === 'success') {
-        setTimeout(() => {
-            formMessage.style.display = 'none';
-        }, 10000);
-    }
-}
-
+        
+       
 // ===================================
 // HEADER SCROLL EFFECT
 // ===================================
@@ -392,5 +376,6 @@ console.log('%c🏠 Diagnostic Humidité Pro', 'color: #004d99; font-size: 24px;
 console.log('%cExpertise indépendante en diagnostic d\'humidité', 'color: #666; font-size: 14px;');
 
 console.log('%cVal-de-Marne (94) et Seine-et-Marne (77)', 'color: #666; font-size: 14px;');
+
 
 
