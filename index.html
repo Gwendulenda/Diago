@@ -658,83 +658,71 @@ function gtag_report_conversion(url) {
                     </a>
                 </div>
 
-              <div class="contact-form-wrapper">
-                    <form id="contactForm" class="contact-form">
-                        <input type="hidden" name="_token" value="123">
-                        <div class="form-group">
-                            <label for="profile">Vous êtes :</label>
-                            <select id="profile" name="profile" required>
-                                <option value="">Sélectionnez votre profil</option>
-                                <option value="proprietaire">Propriétaire</option>
-                                <option value="acheteur">Acheteur (avant achat)</option>
-                                <option value="professionnel">Professionnel (agence, architecte, syndic)</option>
-                                <option value="autre">Autre</option>
-                            </select>
-                        </div>
+             <div class="contact-form-wrapper">
+    <!-- BLOC DE RÉASSURANCE -->
+    <div class="reassurance-header">
+        <h4><i class="fas fa-shield-alt"></i> Contact sans engagement</h4>
+        <p>Nous vous rappelons sous 24h.<br>Les demandes sont traitées dès le jour ouvré suivant.</p>
+    </div>
 
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="nom">Nom *</label>
-                                <input type="text" id="nom" name="nom" required autocomplete="family-name">
-                            </div>
-                            <div class="form-group">
-                                <label for="prenom">Prénom *</label>
-                                <input type="text" id="prenom" name="prenom" required autocomplete="given-name">
-                            </div>
-                        </div>
+    <form id="contactForm" class="contact-form">
+        <!-- CHAMPS CACHÉS (Pour compatibilité avec votre script Google actuel si besoin) -->
+        <input type="hidden" id="profile" name="profile" value="Non précisé">
+        <input type="hidden" id="nom" name="nom" value="">
+        <input type="hidden" id="ville" name="ville" value="">
 
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="email">Email *</label>
-                                <input type="email" id="email" name="email" required autocomplete="email">
-                            </div>
-                            <div class="form-group">
-                                <label for="telephone">Téléphone *</label>
-                                <input type="tel" id="telephone" name="telephone" required autocomplete="tel">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="ville">Ville d'intervention *</label>
-                            <input type="text" id="ville" name="ville" placeholder="Ex: Créteil, Melun..." required autocomplete="address-level2">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="codePostal">Code postal *</label>
-                            <input type="text" id="codePostal" name="codePostal" pattern="[0-9]{5}" placeholder="94000" required autocomplete="postal-code">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="message">Décrivez brièvement votre problématique *</label>
-                            <textarea id="message" name="message" rows="5" placeholder="Ex: Moisissures dans la chambre, taches d'humidité au sous-sol..." required></textarea>
-                        </div>
-
-                        <div class="form-group checkbox-group">
-                            <label class="checkbox-label">
-                                <input type="checkbox" id="urgence" name="urgence">
-                                <span>Situation urgente (intervention souhaitée sous 48h)</span>
-                            </label>
-                        </div>
-
-                        <div class="form-group checkbox-group">
-                            <label class="checkbox-label">
-                                <input type="checkbox" id="rgpd" name="rgpd" required>
-                                <span>J'accepte que mes données soient utilisées pour me recontacter *</span>
-                            </label>
-                        </div>
-
-                        <button type="submit" class="btn-submit">
-                            <i class="fas fa-paper-plane" aria-hidden="true"></i>
-                            Envoyer ma demande
-                        </button>
-
-                        <div id="formMessage" class="form-message"></div>
-                    </form>
-                </div>
-            </div>
+        <!-- CHAMPS VISIBLES -->
+        <div class="form-group">
+            <label for="prenom">Prénom *</label>
+            <input type="text" id="prenom" name="prenom" required autocomplete="given-name" placeholder="Votre prénom">
         </div>
-    </section>
-    
+
+        <div class="form-group">
+            <label for="telephone">Téléphone *</label>
+            <input type="tel" id="telephone" name="telephone" required autocomplete="tel" placeholder="06 00 00 00 00">
+        </div>
+
+        <div class="form-group">
+            <label for="codePostal">Code postal *</label>
+            <input type="text" id="codePostal" name="codePostal" pattern="[0-9]{5}" placeholder="Ex: 94000" required autocomplete="postal-code">
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email (Facultatif)</label>
+            <input type="email" id="email" name="email" autocomplete="email" placeholder="Pour recevoir le rapport (optionnel)">
+        </div>
+
+        <div class="form-group">
+            <label for="message">Message (Facultatif)</label>
+            <textarea id="message" name="message" rows="3" placeholder="Ex : Moisissures dans une chambre, mur humide, odeur…"></textarea>
+        </div>
+
+        <!-- CASES À COCHER -->
+        <div class="form-group checkbox-group bg-highlight">
+            <label class="checkbox-label">
+                <input type="checkbox" id="urgence" name="urgence">
+                <span style="font-weight: 600; color: #d35400;">Situation urgente (intervention sous 48h)</span>
+            </label>
+        </div>
+
+        <div class="form-group checkbox-group">
+            <label class="checkbox-label">
+                <input type="checkbox" id="rgpd" name="rgpd" required>
+                <span>J’accepte d’être recontacté *</span>
+            </label>
+        </div>
+
+        <!-- BOUTON D'ACTION -->
+        <button type="submit" class="btn-submit btn-expert">
+            <i class="fas fa-phone-volume" aria-hidden="true"></i>
+            Être rappelé par un expert
+        </button>
+
+        <div id="formMessage" class="form-message"></div>
+    </form>
+</div>
+
+                       
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
