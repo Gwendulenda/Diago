@@ -2173,7 +2173,7 @@ p {
 }
 
 .btn-expert:hover {
-    background: linear-gradient(135deg, #218838 0%, #1e7e34 100%);
+    background: #ef4444;
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(40, 167, 69, 0.5);
 }
@@ -2195,6 +2195,7 @@ p {
         padding: 15px;
     }
 }
+
 
 
 
