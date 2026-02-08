@@ -658,9 +658,16 @@ function gtag_report_conversion(url) {
                     </a>
                 </div>
 
-               <div class="contact-form-wrapper">
+              <!-- COPIEZ CE CODE CI-DESSOUS POUR VOTRE SITE -->
+<div class="contact-form-wrapper">
     <form id="contactForm" class="contact-form">
         <input type="hidden" name="_token" value="123">
+
+        <!-- CHAMPS CACHÉS (Hidden) pour compatibilité avec votre ancien JS -->
+        <!-- Ces champs sont remplis automatiquement pour éviter les erreurs "Champ manquant" -->
+        <input type="hidden" id="nom" name="nom" value="."> <!-- Valeur par défaut pour éviter l'erreur -->
+        <input type="hidden" id="ville" name="ville" value=".">
+        <input type="hidden" id="profile" name="profile" value="autre">
 
         <!-- BLOC 1 : Champs OBLIGATOIRES -->
         <div class="form-group">
@@ -715,7 +722,6 @@ function gtag_report_conversion(url) {
         </div>
 
         <button type="submit" class="btn-submit">
-            <!-- J'ai mis l'icône téléphone car c'est plus cohérent avec "Être rappelé" -->
             <i class="fas fa-phone" aria-hidden="true" style="margin-right: 8px;"></i>
             Être rappelé par un expert
         </button>
