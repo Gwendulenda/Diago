@@ -377,7 +377,8 @@ scrollTopButton.addEventListener('mouseleave', () => {
 console.log('%c🏠 Diagnostic Humidité Pro', 'color: #004d99; font-size: 24px; font-weight: bold;');
 console.log('%cExpertise indépendante en diagnostic d\'humidité', 'color: #666; font-size: 14px;');
 
-console.log('%cVal-de-Marne (94) et Seine-et-Marne (77)', 'color: #666; font-size: 14px;');
+console.log('%cParis (75), Val-de-Marne (94), Seine-et-Marne (77) et Essonne (91)', 'color: #666; font-size: 14px;');
+
 
 
 
