@@ -210,6 +210,16 @@ function gtag_report_conversion(url) {
             color: #2a9df4;
             text-decoration-color: #2a9df4;
         }
+
+        /* Correction pour garder les liens blancs sur fond sombre (blocs avantages) */
+        .advantage-item .premium-link {
+            color: #ffffff;
+            text-decoration-color: rgba(255, 255, 255, 0.4);
+        }
+        .advantage-item .premium-link:hover {
+            color: #4ecdc4; /* Touche de cyan au survol pour rester cohérent avec la charte */
+            text-decoration-color: #4ecdc4;
+        }
     </style>
 </head>
 <body>
@@ -328,7 +338,7 @@ function gtag_report_conversion(url) {
                             <p><strong>Notre philosophie :</strong> L'expertise humidité ne doit jamais être le prélude à une démarche commerciale agressive. Elle doit consister en une analyse rigoureuse, méthodique et impartiale de l'état sanitaire de votre bien.</p>
                         </div>
                         
-                        <p>En tant qu'<a href="/expert-humidite-independant.html" class="premium-link">expert humidité indépendant</a>, notre unique mission est de révéler la réalité technique de votre bâti. Nous déployons un panel d'outils professionnels (humidimètres de profondeur, caméras thermiques, hygromètres de précision) pour établir un <a href="/diagnostic-humidite-independant.html" class="premium-link">diagnostic humidité indépendant</a> et irréfutable. Nous traduisons ensuite ces mesures complexes en un rapport clair, vous permettant de faire appel aux bons artisans, pour les bonnes raisons.</p>
+                        <p>En tant qu'<a href="/expert-humidite-independant.html" class="premium-link">expert humidité indépendant</a>, notre unique mission est de révéler la réalité technique de votre bâti. Nous déployons un panel d'outils professionnels (humidimètres de profondeur, hygromètres de précision...) pour établir un <a href="/diagnostic-humidite-independant.html" class="premium-link">diagnostic humidité indépendant</a> et irréfutable. Nous traduisons ensuite ces mesures complexes en un rapport clair, vous permettant de faire appel aux bons artisans, pour les bonnes raisons.</p>
                     </div>
                     <div class="problem-image">
                         <div class="quote-box" style="margin-top: 0; height: 100%; display: flex; flex-direction: column; justify-content: center;">
