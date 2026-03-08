@@ -1,6 +1,133 @@
 <!DOCTYPE html>
 <html lang="fr-FR">
 <head>
+<!-- À mettre dans le <head> -->
+<link rel="icon" type="image/png" href="/favicon.png">
+
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VTEGEBEJJP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+
+  // Consentement par défaut : refusé
+  gtag('consent', 'default', {
+    'analytics_storage': 'denied',
+    'wait_for_update': 500
+  });
+
+  gtag('js', new Date());
+
+  // Désactive l'envoi automatique de page_view tant que l'utilisateur n'a pas accepté
+  gtag('config', 'G-VTEGEBEJJP', {
+    'send_page_view': false
+  });
+
+  function sendGA4PageView() {
+    gtag('event', 'page_view', {
+      page_title: document.title,
+      page_location: window.location.href,
+      page_path: window.location.pathname
+    });
+  }
+
+  function acceptAnalytics() {
+    localStorage.setItem('cookie_consent_ga4', 'accepted');
+
+    gtag('consent', 'update', {
+      'analytics_storage': 'granted'
+    });
+
+    sendGA4PageView();
+    document.getElementById('cookie-banner').style.display = 'none';
+  }
+
+  function refuseAnalytics() {
+    localStorage.setItem('cookie_consent_ga4', 'refused');
+
+    gtag('consent', 'update', {
+      'analytics_storage': 'denied'
+    });
+
+    document.getElementById('cookie-banner').style.display = 'none';
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const consent = localStorage.getItem('cookie_consent_ga4');
+    const banner = document.getElementById('cookie-banner');
+
+    if (consent === 'accepted') {
+      gtag('consent', 'update', {
+        'analytics_storage': 'granted'
+      });
+      sendGA4PageView();
+      banner.style.display = 'none';
+    } else if (consent === 'refused') {
+      gtag('consent', 'update', {
+        'analytics_storage': 'denied'
+      });
+      banner.style.display = 'none';
+    } else {
+      banner.style.display = 'flex';
+    }
+  });
+</script>
+
+<style>
+  #cookie-banner {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    max-width: 720px;
+    margin: 0 auto;
+    background: #111;
+    color: #fff;
+    padding: 18px;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+    z-index: 9999;
+    flex-direction: column;
+    gap: 12px;
+    font-family: Arial, sans-serif;
+  }
+
+  #cookie-banner p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  #cookie-banner .cookie-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  #cookie-banner button {
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+
+  #cookie-accept {
+    background: #22c55e;
+    color: white;
+  }
+
+  #cookie-refuse {
+    background: #444;
+    color: white;
+  }
+
+  #cookie-banner a {
+    color: #7dd3fc;
+    text-decoration: underline;
+  }
+</style>
 
 
     <meta charset="UTF-8">
@@ -921,6 +1048,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
 </body>
 </html>
+
 
 
 
