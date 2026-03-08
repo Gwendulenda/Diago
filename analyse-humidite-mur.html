@@ -1,64 +1,132 @@
 <!DOCTYPE html>
 <html lang="fr-FR">
 <head>
-
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "v8ih3ie254");
-</script>
-
 <link rel="icon" type="image/png" href="/favicon.png">
 
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17902488856">
-</script>
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KFTMWSBC53"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'AW-17902488856');
-</script>
-    <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-
-  // 1. Définir le consentement par défaut sur "REFUSÉ" (Important pour Google Ads)
+  // Consentement par défaut : refusé
   gtag('consent', 'default', {
-    'ad_storage': 'denied',
-    'ad_user_data': 'denied',
-    'ad_personalization': 'denied',
     'analytics_storage': 'denied',
     'wait_for_update': 500
   });
-  
-  // 2. Charger le script Google
+
   gtag('js', new Date());
-  gtag('config', 'AW-17902488856');
-</script>
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17902488856"></script>
-
-    <!-- Event snippet for Demande de devis conversion page -->
-<script>
-function gtag_report_conversion(url) {
-  var callback = function () {
-    if (typeof(url) != 'undefined') {
-      window.location = url;
-    }
-  };
-  gtag('event', 'conversion', {
-      'send_to': 'AW-17902488856/LjcRCMzd-OsbEJiaydhC',
-      'value': 1.0,
-      'currency': 'EUR',
-      'event_callback': callback
+  // Désactive l'envoi automatique de page_view tant que l'utilisateur n'a pas accepté
+  gtag('config', 'G-KFTMWSBC53', {
+    'send_page_view': false
   });
-  return false;
-}
+
+  function sendGA4PageView() {
+    gtag('event', 'page_view', {
+      page_title: document.title,
+      page_location: window.location.href,
+      page_path: window.location.pathname
+    });
+  }
+
+  function acceptAnalytics() {
+    localStorage.setItem('cookie_consent_ga4', 'accepted');
+
+    gtag('consent', 'update', {
+      'analytics_storage': 'granted'
+    });
+
+    sendGA4PageView();
+    document.getElementById('cookie-banner').style.display = 'none';
+  }
+
+  function refuseAnalytics() {
+    localStorage.setItem('cookie_consent_ga4', 'refused');
+
+    gtag('consent', 'update', {
+      'analytics_storage': 'denied'
+    });
+
+    document.getElementById('cookie-banner').style.display = 'none';
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const consent = localStorage.getItem('cookie_consent_ga4');
+    const banner = document.getElementById('cookie-banner');
+
+    if (consent === 'accepted') {
+      gtag('consent', 'update', {
+        'analytics_storage': 'granted'
+      });
+      sendGA4PageView();
+      banner.style.display = 'none';
+    } else if (consent === 'refused') {
+      gtag('consent', 'update', {
+        'analytics_storage': 'denied'
+      });
+      banner.style.display = 'none';
+    } else {
+      banner.style.display = 'flex';
+    }
+  });
 </script>
+
+<style>
+  #cookie-banner {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    max-width: 720px;
+    margin: 0 auto;
+    background: #111;
+    color: #fff;
+    padding: 18px;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+    z-index: 9999;
+    flex-direction: column;
+    gap: 12px;
+    font-family: Arial, sans-serif;
+  }
+
+  #cookie-banner p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  #cookie-banner .cookie-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  #cookie-banner button {
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+
+  #cookie-accept {
+    background: #22c55e;
+    color: white;
+  }
+
+  #cookie-refuse {
+    background: #444;
+    color: white;
+  }
+
+  #cookie-banner a {
+    color: #7dd3fc;
+    text-decoration: underline;
+  }
+</style>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -235,6 +303,18 @@ function gtag_report_conversion(url) {
         }
     </style>
 </head>
+    <div id="cookie-banner">
+  <p>
+    Ce site utilise Google Analytics pour mesurer l’audience et améliorer l’expérience utilisateur.
+    Vous pouvez accepter ou refuser la mesure d’audience.
+    <a href="/politique-confidentialite.html" target="_blank">En savoir plus</a>
+  </p>
+
+  <div class="cookie-buttons">
+    <button id="cookie-accept" onclick="acceptAnalytics()">Accepter</button>
+    <button id="cookie-refuse" onclick="refuseAnalytics()">Refuser</button>
+  </div>
+</div>
 <body>
     <!-- Header Identique -->
     <header class="header">
@@ -964,4 +1044,5 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
     
 </body>
+
 </html>
