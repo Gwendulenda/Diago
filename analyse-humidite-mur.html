@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="fr-FR">
 <head>
+<!-- À mettre dans le <head> -->
 <link rel="icon" type="image/png" href="/favicon.png">
 
 <!-- Google Analytics 4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-KFTMWSBC53"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VTEGEBEJJP"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -18,7 +19,7 @@
   gtag('js', new Date());
 
   // Désactive l'envoi automatique de page_view tant que l'utilisateur n'a pas accepté
-  gtag('config', 'G-KFTMWSBC53', {
+  gtag('config', 'G-VTEGEBEJJP', {
     'send_page_view': false
   });
 
@@ -127,7 +128,7 @@
     text-decoration: underline;
   }
 </style>
-
+  
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -315,6 +316,20 @@
     <button id="cookie-refuse" onclick="refuseAnalytics()">Refuser</button>
   </div>
 </div>
+  <!-- À mettre juste avant </body> -->
+<div id="cookie-banner">
+  <p>
+    Ce site utilise Google Analytics pour mesurer l’audience et améliorer l’expérience utilisateur.
+    Vous pouvez accepter ou refuser la mesure d’audience.
+    <a href="/politique-confidentialite.html" target="_blank">En savoir plus</a>
+  </p>
+
+  <div class="cookie-buttons">
+    <button id="cookie-accept" onclick="acceptAnalytics()">Accepter</button>
+    <button id="cookie-refuse" onclick="refuseAnalytics()">Refuser</button>
+  </div>
+</div>
+
 <body>
     <!-- Header Identique -->
     <header class="header">
@@ -1046,6 +1061,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </body>
 
 </html>
+
 
 
 
