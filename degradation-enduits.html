@@ -1,3 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+<head>    
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "v8ih3ie254");
+</script>
+
+<link rel="icon" type="image/png" href="/favicon.png">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17902488856"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-17902488856');
+</script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied',
+    'wait_for_update': 500
+  });
+  
+  gtag('js', new Date());
+  gtag('config', 'AW-17902488856');
+</script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VTEGEBEJJP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+
+  gtag('config', 'G-VTEGEBEJJP', {
+    'send_page_view': false
+  });
+
+  function sendGA4PageView() {
+    gtag('event', 'page_view', {
+      page_title: document.title,
+      page_location: window.location.href,
+      page_path: window.location.pathname
+    });
+  }
+
+  function acceptAnalytics() {
+    localStorage.setItem('cookie_consent_ga4', 'accepted');
+    gtag('consent', 'update', {
+      'analytics_storage': 'granted',
+      'ad_storage': 'granted',
+      'ad_user_data': 'granted',
+      'ad_personalization': 'granted'
+    });
+    sendGA4PageView();
+    document.getElementById('cookie-banner').style.display = 'none';
+  }
+
+  function refuseAnalytics() {
+    localStorage.setItem('cookie_consent_ga4', 'refused');
+    gtag('consent', 'update', {
+      'analytics_storage': 'denied',
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied'
+    });
+    document.getElementById('cookie-banner').style.display = 'none';
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const consent = localStorage.getItem('cookie_consent_ga4');
+    const banner = document.getElementById('cookie-banner');
+
+    if (consent === 'accepted') {
+      acceptAnalytics();
+    } else if (consent === 'refused') {
+      refuseAnalytics();
+    } else {
+      banner.style.display = 'flex';
+    }
+  });
+</script>
+
+<script>
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.location = url;
+    }
+  };
+  gtag('event', 'conversion', {
+      'send_to': 'AW-17902488856/LjcRCMzd-OsbEJiaydhC',
+      'value': 1.0,
+      'currency': 'EUR',
+      'event_callback': callback
+  });
+  return false;
+}
+</script>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -273,7 +382,7 @@
         <div style="max-width: 800px; margin: 0 auto; text-align: center; color: #4a5568; font-size: 1.1rem; line-height: 1.7;">
             <p>Le plâtre tombe en ruine parce qu'il a absorbé trop d'eau, perdant ainsi toute sa résistance. Cependant, <strong>une photo ou un simple coup d'œil ne permet pas d'établir d'où provient cette eau.</strong></p>
             <br>
-            <p>L'humidité peut venir d'une évacuation un peu poreuse à l'intérieur du mur, de remontées d'eau provenant du sol, ou d'un manque d'aération combiné à un mur très froid. <strong>Seule l'intervention d'un expert indépendant</strong>, qui réalise des mesures précises sans chercher à vous vendre des travaux de traitement, vous permettra de comprendre l'origine exacte du problème.</p>
+            <p>L'humidité peut venir de plusieurs endroits différents. <strong>Seule l'intervention d'un expert indépendant</strong>, qui réalise des mesures précises sans chercher à vous vendre des travaux de traitement, vous permettra de comprendre l'origine exacte du problème.</p>
         </div>
     </div>
 </section>
