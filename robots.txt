@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://diago-humidite.fr/sitemap.xml
