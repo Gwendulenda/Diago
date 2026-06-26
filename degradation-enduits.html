@@ -453,45 +453,62 @@ function gtag_report_conversion(url) {
                     <p>Nous vous rappelons sous 24h pour échanger sur vos constats visuels.</p>
                 </div>
 
-                <form id="contactForm" class="contact-form">
-                    <input type="hidden" id="profile" name="profile" value="Pathologie - Degradation enduits">
-                    <input type="hidden" id="nom" name="nom" value="">
-                    <input type="hidden" id="ville" name="ville" value="">
+    <form id="contactForm" class="contact-form">
+        <!-- CHAMPS CACHÉS (Pour compatibilité avec votre script Google actuel si besoin) -->
+        <input type="hidden" id="profile" name="profile" value="Non précisé">
+        <input type="hidden" id="nom" name="nom" value="">
+        <input type="hidden" id="ville" name="ville" value="">
 
-                    <div class="form-group">
-                        <label for="prenom">Prénom *</label>
-                        <input type="text" id="prenom" name="prenom" required autocomplete="given-name" placeholder="Votre prénom">
-                    </div>
+        <!-- CHAMPS VISIBLES -->
+        <div class="form-group">
+            <label for="prenom">Prénom *</label>
+            <input type="text" id="prenom" name="prenom" required autocomplete="given-name" placeholder="Votre prénom">
+        </div>
 
-                    <div class="form-group">
-                        <label for="telephone">Téléphone *</label>
-                        <input type="tel" id="telephone" name="telephone" required autocomplete="tel" placeholder="06 00 00 00 00">
-                    </div>
+        <div class="form-group">
+            <label for="telephone">Téléphone *</label>
+            <input type="tel" id="telephone" name="telephone" required autocomplete="tel" placeholder="06 00 00 00 00">
+        </div>
 
-                    <div class="form-group">
-                        <label for="codePostal">Code postal *</label>
-                        <input type="text" id="codePostal" name="codePostal" pattern="[0-9]{5}" placeholder="Ex: 94000" required autocomplete="postal-code">
-                    </div>
+        <div class="form-group">
+            <label for="codePostal">Code postal *</label>
+            <input type="text" id="codePostal" name="codePostal" pattern="[0-9]{5}" placeholder="Ex: 94000" required autocomplete="postal-code">
+        </div>
 
-                    <div class="form-group">
-                        <label for="email">Email (Facultatif)</label>
-                        <input type="email" id="email" name="email" autocomplete="email">
-                    </div>
+        <div class="form-group">
+            <label for="email">Email (Facultatif)</label>
+            <input type="email" id="email" name="email" autocomplete="email">
+        </div>
 
-                    <div class="form-group checkbox-group">
-                        <label class="checkbox-label">
-                            <input type="checkbox" id="rgpd" name="rgpd" required>
-                            <span>J'accepte d'être recontacté pour un diagnostic objectif *</span>
-                        </label>
-                    </div>
+        <div class="form-group">
+            <label for="message">Message (Facultatif)</label>
+            <textarea id="message" name="message" rows="3" placeholder="Ex : Moisissures dans une chambre, mur humide, odeur…"></textarea>
+        </div>
 
-                    <button type="submit" class="btn-submit btn-expert">
-                        <i class="fas fa-phone-volume" aria-hidden="true"></i>
-                        Être rappelé par un expert
-                    </button>
+        <!-- CASES À COCHER -->
+        <div class="form-group checkbox-group bg-highlight">
+            <label class="checkbox-label">
+                <input type="checkbox" id="urgence" name="urgence">
+                <span style="font-weight: 600; color: #d35400;">Situation urgente (intervention sous 48h)</span>
+            </label>
+        </div>
 
-                    <div id="formMessage" class="form-message"></div>
-                </form>
+        <div class="form-group checkbox-group">
+            <label class="checkbox-label">
+                <input type="checkbox" id="rgpd" name="rgpd" required>
+                <span>J’accepte d’être recontacté *</span>
+            </label>
+        </div>
+
+        <!-- BOUTON D'ACTION -->
+        <button type="submit" class="btn-submit btn-expert">
+            <i class="fas fa-phone-volume" aria-hidden="true"></i>
+            Être rappelé par un expert
+        </button>
+
+        <div id="formMessage" class="form-message"></div>
+    </form>
+                
             </div>
         </div>
     </div>
