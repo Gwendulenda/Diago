@@ -111,7 +111,7 @@
     document.addEventListener('DOMContentLoaded', function () {
         var p = ["06", "82", "53", "39", "50"];
         var numero = p.join('');
-        document.querySelectorAll('[data-numero-long]').forEach(function (el) { el.textContent = 'Appeler'});
+        document.querySelectorAll('[data-numero-long]').forEach(function (el) { el.textContent = 'Appel gratuit'});
         var b = document.getElementById('btn-appel-merci');
         if (b) {
             b.setAttribute('href', 'tel:' + numero);
