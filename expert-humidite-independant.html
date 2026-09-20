@@ -1,134 +1,9 @@
 <!DOCTYPE html>
 <html lang="fr-FR">
 <head>
-<!-- À mettre dans le <head> -->
-<link rel="icon" type="image/png" href="/favicon.png">
-
-<!-- Google Analytics 4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VTEGEBEJJP"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-
-  // Consentement par défaut : refusé
-  gtag('consent', 'default', {
-    'analytics_storage': 'denied',
-    'wait_for_update': 500
-  });
-
-  gtag('js', new Date());
-
-  // Désactive l'envoi automatique de page_view tant que l'utilisateur n'a pas accepté
-  gtag('config', 'G-VTEGEBEJJP', {
-    'send_page_view': false
-  });
-
-  function sendGA4PageView() {
-    gtag('event', 'page_view', {
-      page_title: document.title,
-      page_location: window.location.href,
-      page_path: window.location.pathname
-    });
-  }
-
-  function acceptAnalytics() {
-    localStorage.setItem('cookie_consent_ga4', 'accepted');
-
-    gtag('consent', 'update', {
-      'analytics_storage': 'granted'
-    });
-
-    sendGA4PageView();
-    document.getElementById('cookie-banner').style.display = 'none';
-  }
-
-  function refuseAnalytics() {
-    localStorage.setItem('cookie_consent_ga4', 'refused');
-
-    gtag('consent', 'update', {
-      'analytics_storage': 'denied'
-    });
-
-    document.getElementById('cookie-banner').style.display = 'none';
-  }
-
-  document.addEventListener('DOMContentLoaded', function () {
-    const consent = localStorage.getItem('cookie_consent_ga4');
-    const banner = document.getElementById('cookie-banner');
-
-    if (consent === 'accepted') {
-      gtag('consent', 'update', {
-        'analytics_storage': 'granted'
-      });
-      sendGA4PageView();
-      banner.style.display = 'none';
-    } else if (consent === 'refused') {
-      gtag('consent', 'update', {
-        'analytics_storage': 'denied'
-      });
-      banner.style.display = 'none';
-    } else {
-      banner.style.display = 'flex';
-    }
-  });
-</script>
-
-<style>
-  #cookie-banner {
-    display: none;
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    right: 20px;
-    max-width: 720px;
-    margin: 0 auto;
-    background: #111;
-    color: #fff;
-    padding: 18px;
-    border-radius: 12px;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.25);
-    z-index: 9999;
-    flex-direction: column;
-    gap: 12px;
-    font-family: Arial, sans-serif;
-  }
-
-  #cookie-banner p {
-    margin: 0;
-    font-size: 14px;
-    line-height: 1.5;
-  }
-
-  #cookie-banner .cookie-buttons {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
-
-  #cookie-banner button {
-    border: none;
-    padding: 10px 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 14px;
-  }
-
-  #cookie-accept {
-    background: #22c55e;
-    color: white;
-  }
-
-  #cookie-refuse {
-    background: #444;
-    color: white;
-  }
-
-  #cookie-banner a {
-    color: #7dd3fc;
-    text-decoration: underline;
-  }
-</style>
-
+    <!-- DIAGO : suivi et consentement (tout est centralisé dans js/tracking.js) -->
+    <script src="/js/tracking.js"></script>
+    <link rel="icon" type="image/png" href="/favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -136,7 +11,7 @@
     <title>Expert humidité indépendant : avis neutre | DIAGO</title>
     <meta name="description" content="Expert humidité indépendant pour obtenir un avis clair, des mesures fiables et un rapport utile avant de prendre une décision.">
     <meta name="robots" content="index, follow, max-image-preview:large">
-    <link rel="canonical" href="https://www.diago-humidite.fr/expert-humidite-independant.html">
+    <link rel="canonical" href="https://diago-humidite.fr/expert-humidite-independant.html">
     
     <!-- Optimisation Performance (Preconnect) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -153,8 +28,8 @@
     <meta property="og:site_name" content="DIAGO">
     <meta property="og:title" content="Expert humidité indépendant : avis neutre | DIAGO">
     <meta property="og:description" content="Obtenez un avis clair et des mesures professionnelles sans aucun conflit d'intérêt. Un expert totalement indépendant pour préparer vos décisions.">
-    <meta property="og:url" content="https://www.diago-humidite.fr/expert-humidite-independant.html">
-    <meta property="og:image" content="https://www.diago-humidite.fr/images/share-image-independant.jpg">
+    <meta property="og:url" content="https://diago-humidite.fr/expert-humidite-independant.html">
+    <meta property="og:image" content="https://diago-humidite.fr/favicon.png">
 
     <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image">
@@ -174,15 +49,15 @@
       "@graph": [
         {
           "@type": "Service",
-          "@id": "https://www.diago-humidite.fr/expert-humidite-independant.html",
-          "url": "https://www.diago-humidite.fr/expert-humidite-independant.html",
+          "@id": "https://diago-humidite.fr/expert-humidite-independant.html",
+          "url": "https://diago-humidite.fr/expert-humidite-independant.html",
           "name": "Expert Humidité Indépendant",
           "description": "Expert humidité indépendant proposant un avis neutre, des mesures professionnelles et un rapport clair sans aucun conflit d'intérêt.",
           "provider": {
             "@type": "ProfessionalService",
             "name": "DIAGO",
-            "logo": "https://www.diago-humidite.fr/logo.png",
-            "image": "https://www.diago-humidite.fr/images/share-image-independant.jpg",
+            "logo": "https://diago-humidite.fr/favicon.png",
+            "image": "https://diago-humidite.fr/favicon.png",
             "address": {
               "@type": "PostalAddress",
               "addressRegion": "Île-de-France",
@@ -198,19 +73,19 @@
               "@type": "ListItem",
               "position": 1,
               "name": "Accueil",
-              "item": "https://www.diago-humidite.fr/"
+              "item": "https://diago-humidite.fr/"
             },
             {
               "@type": "ListItem",
               "position": 2,
               "name": "Expertise Humidité",
-              "item": "https://www.diago-humidite.fr/expertise-humidite.html"
+              "item": "https://diago-humidite.fr/expertise-humidite.html"
             },
             {
               "@type": "ListItem",
               "position": 3,
               "name": "Expert Indépendant",
-              "item": "https://www.diago-humidite.fr/expert-humidite-independant.html"
+              "item": "https://diago-humidite.fr/expert-humidite-independant.html"
             }
           ]
         },
@@ -304,19 +179,8 @@
         }
     </style>
 </head>
-   <!-- À mettre juste avant </body> -->
-<div id="cookie-banner">
-  <p>
-    Ce site utilise Google Analytics pour mesurer l’audience et améliorer l’expérience utilisateur.
-    Vous pouvez accepter ou refuser la mesure d’audience.
-    <a href="/politique-confidentialite.html" target="_blank">En savoir plus</a>
-  </p>
+   
 
-  <div class="cookie-buttons">
-    <button id="cookie-accept" onclick="acceptAnalytics()">Accepter</button>
-    <button id="cookie-refuse" onclick="refuseAnalytics()">Refuser</button>
-  </div>
-</div>
 <body>
     <!-- Header Identique -->
     <header class="header">
@@ -789,6 +653,18 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="source">Comment nous avez-vous connu ? *</label>
+                            <select id="source" name="source" required>
+                                <option value="">Choisissez une réponse</option>
+                                <option value="Assistant IA (ChatGPT, Gemini…)">Assistant IA (ChatGPT, Gemini…)</option>
+                                <option value="Recherche Google">Recherche Google</option>
+                                <option value="Annonce Google">Annonce Google</option>
+                                <option value="Recommandation d'un proche">Recommandation d'un proche</option>
+                                <option value="Professionnel (agence, syndic, artisan…)">Professionnel (agence, syndic, artisan…)</option>
+                                <option value="Autre">Autre</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label for="message">Quelques mots sur la situation (Facultatif)</label>
                             <textarea id="message" name="message" rows="3" placeholder="Ex : J'ai reçu plusieurs devis très différents, j'aimerais avoir un avis neutre avant de prendre une décision..."></textarea>
                         </div>
@@ -875,15 +751,15 @@
                 <div class="footer-section">
                     <h4>Zone d'intervention</h4>
                     <ul>
-                        <li><a href="/diagnostic-humidite-paris-75.html" ">Paris (75)</a></li>
-                        <li><a href="/diagnostic-humidite-val-de-marne-94.html" ">Val de Marne (94)</a></li>
-                        <li><a href="/diagnostic-humidite-seine-et-marne-77.html" ">Seine et Marne (77)</a></li>
-                        <li><a href="/diagnostic-humidite-essonne-91.html" ">Essonne (91)</a></li>
+                        <li><a href="/diagnostic-humidite-paris-75.html">Paris (75)</a></li>
+                        <li><a href="/diagnostic-humidite-val-de-marne-94.html">Val de Marne (94)</a></li>
+                        <li><a href="/diagnostic-humidite-seine-et-marne-77.html">Seine et Marne (77)</a></li>
+                        <li><a href="/diagnostic-humidite-essonne-91.html">Essonne (91)</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 DIAGO. Tous droits réservés.</p>
+                <p>&copy; 2026 DIAGO. Tous droits réservés.</p>
             </div>
         </div>
     </footer>
@@ -957,97 +833,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-    <style>
-  #cookie-banner {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: #2c3e50;
-    color: #ffffff;
-    padding: 15px 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
-    z-index: 9999;
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-    display: none;
-  }
-  
-  @media (min-width: 768px) {
-    #cookie-banner {
-      flex-direction: row;
-      justify-content: space-between;
-      padding: 15px 50px;
-    }
-  }
-
-  .cookie-buttons {
-    margin-top: 10px;
-    display: flex;
-    gap: 10px;
-  }
-  
-  @media (min-width: 768px) {
-    .cookie-buttons { margin-top: 0; }
-  }
-
-  .btn-cookie {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-  }
-  
-  #btn-accept { background-color: #27ae60; color: white; }
-  #btn-deny { background-color: #7f8c8d; color: white; }
-</style>
-
-<div id="cookie-banner">
-  <div>
-    Nous utilisons des cookies pour mesurer l'efficacité de nos campagnes publicitaires.
-    <a href="/mentions-legales.html" style="color: #bdc3c7; text-decoration: underline;">En savoir plus</a>.
-  </div>
-  <div class="cookie-buttons">
-    <button id="btn-deny" class="btn-cookie">Refuser</button>
-    <button id="btn-accept" class="btn-cookie">Accepter</button>
-  </div>
-</div>
-
-<script>
-  (function() {
-    var banner = document.getElementById('cookie-banner');
-    var consent = localStorage.getItem('cookie_consent');
-
-    if (!consent) {
-      banner.style.display = 'flex';
-    }
-
-    document.getElementById('btn-accept').addEventListener('click', function() {
-      gtag('consent', 'update', {
-        'ad_storage': 'granted',
-        'ad_user_data': 'granted',
-        'ad_personalization': 'granted',
-        'analytics_storage': 'granted'
-      });
-      localStorage.setItem('cookie_consent', 'granted');
-      banner.style.display = 'none';
-    });
-
-    document.getElementById('btn-deny').addEventListener('click', function() {
-      localStorage.setItem('cookie_consent', 'denied');
-      banner.style.display = 'none';
-    });
-  })();
-</script>
-    
 </body>
 
 </html>
-
-
 

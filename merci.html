@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+<head>
+    <!-- DIAGO : suivi et consentement (tout est centralisé dans js/tracking.js) -->
+    <script src="/js/tracking.js"></script>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Page de confirmation : ne doit pas apparaître dans Google -->
+    <title>Demande bien reçue | DIAGO</title>
+    <meta name="robots" content="noindex, nofollow">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+
+    <style>
+        body { font-size: 17px; }
+        .merci { padding: 56px 0 72px; min-height: 70vh; }
+        .merci-card { max-width: 680px; margin: 0 auto; background: var(--white); border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); padding: 40px 32px; text-align: center; }
+        .merci-card .merci-icone { font-size: 3rem; color: var(--accent-green); margin-bottom: 14px; }
+        .merci-card h1 { font-size: 2rem; color: var(--primary-dark); margin-bottom: 12px; }
+        .merci-card > p { color: var(--gray-700); line-height: 1.65; margin-bottom: 26px; }
+        .merci-etapes { text-align: left; list-style: none; padding: 0; margin: 0 0 30px; display: grid; gap: 14px; }
+        .merci-etapes li { display: flex; gap: 14px; align-items: flex-start; background: var(--primary-pale); border-radius: var(--radius-md); padding: 14px 16px; color: var(--gray-800); line-height: 1.5; }
+        .merci-etapes i { color: var(--primary-medium); font-size: 1.2rem; margin-top: 3px; width: 22px; text-align: center; }
+        .merci-actions { display: flex; flex-direction: column; gap: 12px; align-items: center; }
+        .merci-actions .btn-call { font-size: 1.1rem; padding: 14px 26px; }
+        .merci-actions small { color: var(--gray-600); }
+        .merci-retour { display: inline-block; margin-top: 22px; color: var(--primary-medium); }
+        @media (max-width: 560px) {
+            .merci { padding: 28px 0 48px; }
+            .merci-card { padding: 28px 20px; }
+            .merci-card h1 { font-size: 1.6rem; }
+            .merci-actions .btn-call { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo-link" aria-label="Retour à l'accueil Diago">
+                    <div class="diago-logo header-logo">
+                        <svg class="logo-icon" viewBox="0 0 100 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Logo Diago">
+                            <defs>
+                                <linearGradient id="gradBlue" x1="0%" y1="100%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:#0b4e85"/>
+                                    <stop offset="100%" style="stop-color:#2a9df4"/>
+                                </linearGradient>
+                                <linearGradient id="gradTeal" x1="0%" y1="100%" x2="0%" y2="0%">
+                                    <stop offset="0%" style="stop-color:#0f3a5d"/>
+                                    <stop offset="100%" style="stop-color:#4ecdc4"/>
+                                </linearGradient>
+                            </defs>
+                            <path d="M 50 5 C 30 30, 0 60, 5 90 C 10 120, 45 135, 70 120 C 50 125, 20 110, 20 85 C 20 55, 45 30, 50 5 Z" fill="url(#gradBlue)" />
+                            <path d="M 50 5 C 70 40, 95 70, 85 100 C 80 115, 65 122, 55 122 C 75 115, 80 95, 75 80 C 65 55, 55 25, 50 5 Z" fill="url(#gradTeal)" />
+                        </svg>
+                        <div class="logo-text">
+                            <span class="brand-name">DIAGO</span>
+                            <span class="tagline">Comprendre l'humidité avant les travaux</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="merci hero">
+        <div class="container">
+            <div class="merci-card">
+                <div class="merci-icone"><i class="fas fa-circle-check" aria-hidden="true"></i></div>
+                <h1>Votre demande est bien reçue</h1>
+                <p>Merci pour votre confiance. Un expert DIAGO vous rappelle pour échanger sur votre situation et convenir d'un rendez-vous.</p>
+
+                <ul class="merci-etapes">
+                    <li><i class="fas fa-phone" aria-hidden="true"></i><span><strong>Rappel sous 24 h maximum</strong>, souvent dans la journée. Pensez à décrocher si un numéro inconnu vous appelle.</span></li>
+                    <li><i class="fas fa-comments" aria-hidden="true"></i><span><strong>Premier échange</strong> : vous décrivez le problème, nous vous indiquons le tarif et fixons la visite.</span></li>
+                    <li><i class="fas fa-camera" aria-hidden="true"></i><span><strong>Pour gagner du temps</strong> : préparez quelques photos des zones concernées.</span></li>
+                </ul>
+
+                <div class="merci-actions">
+                    <a href="#" id="btn-appel-merci" class="btn-call">
+                        <i class="fas fa-phone" aria-hidden="true"></i>
+                        <span data-numero-long>Nous appeler directement</span>
+                    </a>
+                    <small>Situation urgente ? Appelez-nous sans attendre.</small>
+                </div>
+
+                <a class="merci-retour" href="/">Retour au site</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 DIAGO · Diagnostic humidité indépendant · <a href="/mentions-legales.html" style="color:inherit">Mentions légales</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    // Enregistre la conversion Google Ads (une seule fois, uniquement après un vrai envoi de formulaire)
+    if (window.DiagoTracking) { window.DiagoTracking.confirmerDemande(); }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var p = ["06", "82", "53", "39", "50"];
+        var numero = p.join('');
+        document.querySelectorAll('[data-numero-long]').forEach(function (el) { el.textContent = 'Appeler le ' + p.join(' '); });
+        var b = document.getElementById('btn-appel-merci');
+        if (b) {
+            b.setAttribute('href', 'tel:' + numero);
+            b.addEventListener('click', function (e) {
+                e.preventDefault();
+                window.location.href = 'tel:' + numero;
+            });
+        }
+    });
+    </script>
+</body>
+</html>

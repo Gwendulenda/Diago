@@ -1,112 +1,9 @@
 <!DOCTYPE html>
 <html lang="fr-FR">
-<head>    
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "v8ih3ie254");
-</script>
-
-<link rel="icon" type="image/png" href="/favicon.png">
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17902488856"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'AW-17902488856');
-</script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-
-  gtag('consent', 'default', {
-    'ad_storage': 'denied',
-    'ad_user_data': 'denied',
-    'ad_personalization': 'denied',
-    'analytics_storage': 'denied',
-    'wait_for_update': 500
-  });
-  
-  gtag('js', new Date());
-  gtag('config', 'AW-17902488856');
-</script>
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VTEGEBEJJP"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-
-  gtag('config', 'G-VTEGEBEJJP', {
-    'send_page_view': false
-  });
-
-  function sendGA4PageView() {
-    gtag('event', 'page_view', {
-      page_title: document.title,
-      page_location: window.location.href,
-      page_path: window.location.pathname
-    });
-  }
-
-  function acceptAnalytics() {
-    localStorage.setItem('cookie_consent_ga4', 'accepted');
-    gtag('consent', 'update', {
-      'analytics_storage': 'granted',
-      'ad_storage': 'granted',
-      'ad_user_data': 'granted',
-      'ad_personalization': 'granted'
-    });
-    sendGA4PageView();
-    document.getElementById('cookie-banner').style.display = 'none';
-  }
-
-  function refuseAnalytics() {
-    localStorage.setItem('cookie_consent_ga4', 'refused');
-    gtag('consent', 'update', {
-      'analytics_storage': 'denied',
-      'ad_storage': 'denied',
-      'ad_user_data': 'denied',
-      'ad_personalization': 'denied'
-    });
-    document.getElementById('cookie-banner').style.display = 'none';
-  }
-
-  document.addEventListener('DOMContentLoaded', function () {
-    const consent = localStorage.getItem('cookie_consent_ga4');
-    const banner = document.getElementById('cookie-banner');
-
-    if (consent === 'accepted') {
-      acceptAnalytics();
-    } else if (consent === 'refused') {
-      refuseAnalytics();
-    } else {
-      banner.style.display = 'flex';
-    }
-  });
-</script>
-
-<script>
-function gtag_report_conversion(url) {
-  var callback = function () {
-    if (typeof(url) != 'undefined') {
-      window.location = url;
-    }
-  };
-  gtag('event', 'conversion', {
-      'send_to': 'AW-17902488856/LjcRCMzd-OsbEJiaydhC',
-      'value': 1.0,
-      'currency': 'EUR',
-      'event_callback': callback
-  });
-  return false;
-}
-</script>
-
+<head>
+    <!-- DIAGO : suivi et consentement (tout est centralisé dans js/tracking.js) -->
+    <script src="/js/tracking.js"></script>
+    <link rel="icon" type="image/png" href="/favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -114,7 +11,7 @@ function gtag_report_conversion(url) {
     <title>Cloque de peinture liée à l'humidité : identifier le désordre | DIAGO</title>
     <meta name="description" content="Une cloque de peinture ou un revêtement qui s'écaille est un symptôme. Évitez les réparations hâtives et demandez un diagnostic humidité indépendant.">
     <meta name="robots" content="index, follow, max-image-preview:large">
-    <link rel="canonical" href="https://www.diago-humidite.fr/cloque-peinture.html">
+    <link rel="canonical" href="https://diago-humidite.fr/cloque-peinture.html">
     
     <!-- Optimisation Performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -130,8 +27,8 @@ function gtag_report_conversion(url) {
     <meta property="og:site_name" content="DIAGO">
     <meta property="og:title" content="Cloque de peinture liée à l'humidité | DIAGO">
     <meta property="og:description" content="Une peinture boursouflée est un symptôme visuel révélateur. Comprenez pourquoi une analyse indépendante est nécessaire avant de repeindre.">
-    <meta property="og:url" content="https://www.diago-humidite.fr/cloque-peinture.html">
-    <meta property="og:image" content="https://www.diago-humidite.fr/images/share-image.jpg">
+    <meta property="og:url" content="https://diago-humidite.fr/cloque-peinture.html">
+    <meta property="og:image" content="https://diago-humidite.fr/favicon.png">
 
     <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image">
@@ -151,11 +48,11 @@ function gtag_report_conversion(url) {
       "@type": "WebPage",
       "name": "Cloque de peinture : Symptôme visuel d'humidité",
       "description": "Fiche descriptive sur l'apparition de cloques et boursouflures de peinture en tant que manifestation de désordres humides sous-jacents.",
-      "url": "https://www.diago-humidite.fr/cloque-peinture.html",
+      "url": "https://diago-humidite.fr/cloque-peinture.html",
       "publisher": {
         "@type": "ProfessionalService",
         "name": "DIAGO",
-        "logo": "https://www.diago-humidite.fr/logo.png"
+        "logo": "https://diago-humidite.fr/favicon.png"
       }
     }
     </script>
@@ -224,16 +121,7 @@ function gtag_report_conversion(url) {
     </style>
 </head>
 <body>
-    <div id="cookie-banner" style="display:none; position: fixed; bottom: 0; left: 0; width: 100%; background-color: #2c3e50; color: #ffffff; padding: 15px 20px; flex-direction: row; align-items: center; justify-content: space-between; box-shadow: 0 -2px 10px rgba(0,0,0,0.2); z-index: 9999; font-family: Arial, sans-serif; font-size: 14px;">
-      <div>
-        Nous utilisons des cookies pour mesurer l'efficacité de nos campagnes publicitaires.
-        <a href="/mentions-legales.html" style="color: #bdc3c7; text-decoration: underline;">En savoir plus</a>.
-      </div>
-      <div class="cookie-buttons" style="display: flex; gap: 10px;">
-        <button id="btn-deny" class="btn-cookie" style="background-color: #7f8c8d; color: white; padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;" onclick="refuseAnalytics()">Refuser</button>
-        <button id="btn-accept" class="btn-cookie" style="background-color: #27ae60; color: white; padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;" onclick="acceptAnalytics()">Accepter</button>
-      </div>
-    </div>
+    
 
     <!-- Header -->
     <header class="header">
@@ -493,6 +381,18 @@ function gtag_report_conversion(url) {
         </div>
 
         <div class="form-group">
+                            <label for="source">Comment nous avez-vous connu ? *</label>
+                            <select id="source" name="source" required>
+                                <option value="">Choisissez une réponse</option>
+                                <option value="Assistant IA (ChatGPT, Gemini…)">Assistant IA (ChatGPT, Gemini…)</option>
+                                <option value="Recherche Google">Recherche Google</option>
+                                <option value="Annonce Google">Annonce Google</option>
+                                <option value="Recommandation d'un proche">Recommandation d'un proche</option>
+                                <option value="Professionnel (agence, syndic, artisan…)">Professionnel (agence, syndic, artisan…)</option>
+                                <option value="Autre">Autre</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
             <label for="message">Message (Facultatif)</label>
             <textarea id="message" name="message" rows="3" placeholder="Ex : Moisissures dans une chambre, mur humide, odeur…"></textarea>
         </div>
@@ -576,15 +476,15 @@ function gtag_report_conversion(url) {
                 <div class="footer-section">
                     <h4>Zone d'intervention</h4>
                     <ul>
-                         <li><a href="/diagnostic-humidite-paris-75.html" ">Paris (75)</a></li>
-                        <li><a href="/diagnostic-humidite-val-de-marne-94.html" ">Val de Marne (94)</a></li>
-                        <li><a href="/diagnostic-humidite-seine-et-marne-77.html" ">Seine et Marne (77)</a></li>
-                        <li><a href="/diagnostic-humidite-essonne-91.html" ">Essonne (91)</a></li>
+                         <li><a href="/diagnostic-humidite-paris-75.html">Paris (75)</a></li>
+                        <li><a href="/diagnostic-humidite-val-de-marne-94.html">Val de Marne (94)</a></li>
+                        <li><a href="/diagnostic-humidite-seine-et-marne-77.html">Seine et Marne (77)</a></li>
+                        <li><a href="/diagnostic-humidite-essonne-91.html">Essonne (91)</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 DIAGO. Tous droits réservés.</p>
+                <p>&copy; 2026 DIAGO. Tous droits réservés.</p>
             </div>
         </div>
     </footer>

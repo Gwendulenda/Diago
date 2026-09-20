@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+<head>
+    <!-- DIAGO : suivi et consentement (tout est centralisé dans js/tracking.js) -->
+    <script src="/js/tracking.js"></script>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Page réservée aux annonces Google Ads : elle ne doit PAS apparaître dans Google -->
+    <title>Diagnostic humidité indépendant en Île-de-France | DIAGO</title>
+    <meta name="description" content="Un expert indépendant identifie l'origine de votre problème d'humidité. Aucune vente de travaux. Rapport remis le jour de la visite. Île-de-France.">
+    <meta name="robots" content="noindex, follow">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+
+    <style>
+        /* ---- Ajustements propres à la page d'atterrissage ---- */
+        body { font-size: 17px; }
+        .lp-header .header-content { justify-content: space-between; }
+        .lp-header .diago-logo { pointer-events: none; }
+        .lp-header .btn-call { padding: 10px 18px; font-size: 1rem; }
+        .lp-hero { padding: 48px 0 56px; }
+        .lp-hero-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 48px; align-items: start; }
+        .lp-hero h1 { font-size: 2.4rem; line-height: 1.2; color: var(--primary-dark); margin-bottom: 16px; }
+        .lp-lead { font-size: 1.15rem; color: var(--gray-700); margin-bottom: 22px; line-height: 1.6; }
+        .lp-garanties { list-style: none; margin: 0 0 26px; padding: 0; display: grid; gap: 10px; }
+        .lp-garanties li { display: flex; gap: 12px; align-items: flex-start; font-weight: 600; color: var(--gray-800); }
+        .lp-garanties i { color: var(--accent-green); font-size: 1.2rem; margin-top: 3px; }
+        .lp-appel { display: flex; flex-direction: column; gap: 6px; align-items: flex-start; }
+        .lp-appel .btn-call { font-size: 1.2rem; padding: 16px 28px; }
+        .lp-appel small { color: var(--gray-600); }
+        .lp-form-card { background: var(--white); border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); padding: 28px; }
+        .lp-form-card h2 { font-size: 1.35rem; color: var(--primary-dark); margin-bottom: 4px; }
+        .lp-form-card .lp-form-sub { color: var(--gray-600); margin-bottom: 18px; font-size: 0.95rem; }
+        .lp-form-card .form-group { margin-bottom: 14px; }
+        .lp-form-card .btn-submit { width: 100%; font-size: 1.1rem; }
+        .lp-section { padding: 64px 0; }
+        .lp-section.alt { background: var(--gray-100); }
+        .lp-section h2 { font-size: 1.9rem; color: var(--primary-dark); text-align: center; margin-bottom: 12px; }
+        .lp-section .lp-intro { text-align: center; max-width: 720px; margin: 0 auto 36px; color: var(--gray-700); line-height: 1.7; }
+        .lp-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        .lp-step { background: var(--white); border-radius: var(--radius-lg); padding: 22px; box-shadow: var(--shadow-sm); }
+        .lp-step span { display: inline-flex; width: 36px; height: 36px; border-radius: 50%; background: var(--primary-medium); color: #fff; font-weight: 800; align-items: center; justify-content: center; margin-bottom: 10px; }
+        .lp-step h3 { font-size: 1.05rem; color: var(--primary-dark); margin-bottom: 6px; }
+        .lp-step p { color: var(--gray-700); font-size: 0.95rem; line-height: 1.55; }
+        .lp-final { text-align: center; background: linear-gradient(135deg, #003366 0%, #004d99 100%); color: #fff; }
+        .lp-final h2 { color: #fff; }
+        .lp-final p { color: #dbeafe; margin-bottom: 24px; }
+        .lp-final .lp-final-ctas { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+        .lp-final .btn-secondary { background: #fff; color: var(--primary-dark); }
+        .lp-footer { background: var(--primary-dark); color: #cbd5e1; text-align: center; padding: 22px 16px 110px; font-size: 0.9rem; }
+        .lp-footer a { color: #cbd5e1; }
+        .sticky-mobile-wrapper.lp-sticky { display: none; }
+        .faq-item .faq-answer p { line-height: 1.65; }
+
+        @media (max-width: 900px) {
+            .lp-hero-grid { grid-template-columns: 1fr; gap: 28px; }
+            .lp-hero h1 { font-size: 1.85rem; }
+            .lp-steps { grid-template-columns: 1fr 1fr; }
+            .sticky-mobile-wrapper.lp-sticky { display: block; }
+        }
+        @media (max-width: 560px) {
+            .lp-hero { padding: 28px 0 40px; }
+            .lp-steps { grid-template-columns: 1fr; }
+            .lp-header .btn-call { display: none; }
+            .lp-appel { align-items: center; }
+            .lp-appel .btn-call { width: 92%; }
+            .lp-form-card { padding: 20px; }
+            .lp-section { padding: 48px 0; }
+            .lp-section h2 { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- En-tête minimal : pas de menu, pour que le visiteur reste sur la page -->
+    <header class="header lp-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="diago-logo header-logo">
+                    <svg class="logo-icon" viewBox="0 0 100 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Logo Diago">
+                        <defs>
+                            <linearGradient id="gradBlue" x1="0%" y1="100%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#0b4e85"/>
+                                <stop offset="100%" style="stop-color:#2a9df4"/>
+                            </linearGradient>
+                            <linearGradient id="gradTeal" x1="0%" y1="100%" x2="0%" y2="0%">
+                                <stop offset="0%" style="stop-color:#0f3a5d"/>
+                                <stop offset="100%" style="stop-color:#4ecdc4"/>
+                            </linearGradient>
+                        </defs>
+                        <path d="M 50 5 C 30 30, 0 60, 5 90 C 10 120, 45 135, 70 120 C 50 125, 20 110, 20 85 C 20 55, 45 30, 50 5 Z" fill="url(#gradBlue)" />
+                        <path d="M 50 5 C 70 40, 95 70, 85 100 C 80 115, 65 122, 55 122 C 75 115, 80 95, 75 80 C 65 55, 55 25, 50 5 Z" fill="url(#gradTeal)" />
+                    </svg>
+                    <div class="logo-text">
+                        <span class="brand-name">DIAGO</span>
+                        <span class="tagline">Comprendre l'humidité avant les travaux</span>
+                    </div>
+                </div>
+                <a href="#" id="btn-appel-header" class="btn-call" aria-label="Appeler DIAGO">
+                    <i class="fas fa-phone" aria-hidden="true"></i>
+                    <span class="lp-num-header" data-numero>Appeler</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 1. Accroche + appel + formulaire (visible sans faire défiler) -->
+    <section class="hero lp-hero">
+        <div class="container">
+            <div class="lp-hero-grid">
+                <div>
+                    <h1>Diagnostic humidité <span class="highlight">indépendant</span> en Île-de-France</h1>
+                    <p class="lp-lead">Un expert identifie l'origine réelle de votre problème d'humidité et vous explique quoi faire. Nous ne vendons aucun travaux : notre seul intérêt est de trouver la bonne cause.</p>
+
+                    <ul class="lp-garanties">
+                        <li><i class="fas fa-check-circle" aria-hidden="true"></i> Aucune vente de travaux, aucun conflit d'intérêt</li>
+                        <li><i class="fas fa-check-circle" aria-hidden="true"></i> Rapport écrit remis le jour de la visite</li>
+                        <li><i class="fas fa-check-circle" aria-hidden="true"></i> Intervention sous 7 jours dans toute l'Île-de-France</li>
+                    </ul>
+
+                    <div class="lp-appel">
+                        <a href="#" id="btn-appel-hero" class="btn-call">
+                            <i class="fas fa-phone" aria-hidden="true"></i>
+                            <span data-numero-long>Appeler un expert</span>
+                        </a>
+                        <small>Ou laissez vos coordonnées : nous vous rappelons.</small>
+                    </div>
+                </div>
+
+                <div class="lp-form-card" id="contact">
+                    <h2>Être rappelé par un expert</h2>
+                    <p class="lp-form-sub">Sans engagement. Rappel sous 24 h maximum, souvent dans la journée.</p>
+
+                    <form id="contactForm" class="contact-form" novalidate>
+                        <div class="form-group">
+                            <label for="prenom">Prénom *</label>
+                            <input type="text" id="prenom" name="prenom" required autocomplete="given-name" placeholder="Votre prénom">
+                        </div>
+                        <div class="form-group">
+                            <label for="telephone">Téléphone *</label>
+                            <input type="tel" id="telephone" name="telephone" required autocomplete="tel" inputmode="tel" placeholder="06 00 00 00 00">
+                        </div>
+                        <div class="form-group">
+                            <label for="codePostal">Code postal *</label>
+                            <input type="text" id="codePostal" name="codePostal" required autocomplete="postal-code" inputmode="numeric" maxlength="5" placeholder="Ex : 94000">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required autocomplete="email" placeholder="vous@exemple.fr">
+                        </div>
+                        <div class="form-group">
+                            <label for="source">Comment nous avez-vous connu ? *</label>
+                            <select id="source" name="source" required>
+                                <option value="">Choisissez une réponse</option>
+                                <option value="Assistant IA (ChatGPT, Gemini…)">Assistant IA (ChatGPT, Gemini…)</option>
+                                <option value="Recherche Google">Recherche Google</option>
+                                <option value="Annonce Google">Annonce Google</option>
+                                <option value="Recommandation d'un proche">Recommandation d'un proche</option>
+                                <option value="Professionnel (agence, syndic, artisan…)">Professionnel (agence, syndic, artisan…)</option>
+                                <option value="Autre">Autre</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Votre problème en quelques mots (facultatif)</label>
+                            <textarea id="message" name="message" rows="2" placeholder="Ex : moisissures dans une chambre, bas de mur humide…"></textarea>
+                        </div>
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="urgence" name="urgence">
+                                <span>Situation urgente (intervention sous 48 h)</span>
+                            </label>
+                        </div>
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="rgpd" name="rgpd" required>
+                                <span>J'accepte d'être recontacté au sujet de ma demande *</span>
+                            </label>
+                        </div>
+                        <button type="submit" class="btn-submit btn-expert">
+                            <i class="fas fa-phone-volume" aria-hidden="true"></i>
+                            Être rappelé
+                        </button>
+                        <div id="formMessage" class="form-message" role="alert"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Pourquoi un diagnostic indépendant -->
+    <section class="lp-section">
+        <div class="container">
+            <h2>Pourquoi un diagnostic indépendant ?</h2>
+            <p class="lp-intro">Beaucoup de diagnostics « gratuits » sont réalisés par des entreprises qui vendent ensuite le traitement. Le risque : un traitement coûteux qui ne correspond pas à la vraie cause. Condensation, infiltration, fuite ou remontées capillaires ne se traitent pas du tout de la même façon.</p>
+            <div class="comparison-card">
+                <div class="comparison-item bad">
+                    <i class="fas fa-times-circle" aria-hidden="true"></i>
+                    <h4>Diagnostic commercial</h4>
+                    <ul>
+                        <li>Objectif : vendre un traitement</li>
+                        <li>Solution souvent décidée d'avance</li>
+                        <li>Conflit d'intérêt</li>
+                    </ul>
+                </div>
+                <div class="comparison-item good">
+                    <i class="fas fa-check-circle" aria-hidden="true"></i>
+                    <h4>Diagnostic DIAGO</h4>
+                    <ul>
+                        <li>Objectif : trouver la vraie cause</li>
+                        <li>Mesures et analyse sur place</li>
+                        <li>Vous choisissez librement l'entreprise</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Ce que contient le rapport -->
+    <section class="lp-section alt">
+        <div class="container">
+            <h2>Ce que vous recevez</h2>
+            <p class="lp-intro">Un rapport clair, utilisable par n'importe quel professionnel, remis le jour même.</p>
+            <div class="rapport-grid">
+                <div class="rapport-item"><i class="fas fa-search" aria-hidden="true"></i><span>Les causes identifiées, ou les hypothèses classées par probabilité</span></div>
+                <div class="rapport-item"><i class="fas fa-ruler-combined" aria-hidden="true"></i><span>Les mesures relevées et leur interprétation</span></div>
+                <div class="rapport-item"><i class="fas fa-lightbulb" aria-hidden="true"></i><span>Les solutions adaptées à votre situation</span></div>
+                <div class="rapport-item"><i class="fas fa-triangle-exclamation" aria-hidden="true"></i><span>Le niveau d'urgence et les priorités</span></div>
+                <div class="rapport-item"><i class="fas fa-file-signature" aria-hidden="true"></i><span>Des éléments utiles pour vos devis, votre syndic ou votre assurance</span></div>
+                <div class="rapport-item"><i class="fas fa-comments" aria-hidden="true"></i><span>Un échange après la visite, par exemple pour relire un devis</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Déroulement -->
+    <section class="lp-section">
+        <div class="container">
+            <h2>Comment ça se passe</h2>
+            <p class="lp-intro">Simple, rapide, sans surprise.</p>
+            <div class="lp-steps">
+                <div class="lp-step"><span>1</span><h3>Premier appel</h3><p>Vous décrivez la situation. Nous vous indiquons le tarif et fixons un rendez-vous.</p></div>
+                <div class="lp-step"><span>2</span><h3>Visite sur place</h3><p>Environ une heure : inspection, mesures, contrôle des zones sensibles.</p></div>
+                <div class="lp-step"><span>3</span><h3>Explications</h3><p>Nous vous expliquons sur place ce qui se passe et pourquoi.</p></div>
+                <div class="lp-step"><span>4</span><h3>Rapport le jour même</h3><p>Vous recevez un rapport écrit, avec les solutions à envisager.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!--
+    ===== TÉMOIGNAGES CLIENTS (à activer quand vous les aurez recueillis) =====
+    Utilisez UNIQUEMENT de vrais avis, avec l'accord écrit du client
+    (prénom + initiale du nom + ville). Retirez les balises de commentaire
+    autour de cette section pour l'afficher.
+
+    <section class="lp-section alt">
+        <div class="container">
+            <h2>Ils nous ont fait confiance</h2>
+            <div class="rapport-grid">
+                <div class="rapport-item"><i class="fas fa-quote-left" aria-hidden="true"></i><span>« Texte du témoignage. » — Prénom X., Ville</span></div>
+                <div class="rapport-item"><i class="fas fa-quote-left" aria-hidden="true"></i><span>« Texte du témoignage. » — Prénom X., Ville</span></div>
+                <div class="rapport-item"><i class="fas fa-quote-left" aria-hidden="true"></i><span>« Texte du témoignage. » — Prénom X., Ville</span></div>
+            </div>
+        </div>
+    </section>
+    -->
+
+    <!-- 5. Questions fréquentes -->
+    <section class="faq-section lp-section alt" id="faq">
+        <div class="container">
+            <h2>Questions fréquentes</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question"><i class="fas fa-chevron-right" aria-hidden="true"></i><h3>Le diagnostic est-il payant ?</h3></div>
+                    <div class="faq-answer"><p>Oui. C'est ce qui garantit notre indépendance : nous sommes payés pour l'analyse, pas pour vendre des travaux. Le tarif, qui dépend de la surface et de la situation, vous est donné dès le premier appel, avant tout engagement.</p></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question"><i class="fas fa-chevron-right" aria-hidden="true"></i><h3>Réalisez-vous les travaux ensuite ?</h3></div>
+                    <div class="faq-answer"><p>Non, jamais. Nous vous indiquons les solutions adaptées, et vous restez libre de choisir l'entreprise qui les réalisera. Nous pouvons ensuite relire les devis que vous recevez.</p></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question"><i class="fas fa-chevron-right" aria-hidden="true"></i><h3>Combien de temps dure la visite ?</h3></div>
+                    <div class="faq-answer"><p>Environ une heure, selon la surface et la complexité du logement. Le rapport vous est remis le jour même.</p></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question"><i class="fas fa-chevron-right" aria-hidden="true"></i><h3>Où intervenez-vous ?</h3></div>
+                    <div class="faq-answer"><p>Dans toute l'Île-de-France : Paris et les départements 77, 78, 91, 92, 93, 94 et 95. Maisons, appartements, caves, copropriétés et locaux professionnels.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Dernier appel à l'action -->
+    <section class="lp-section lp-final">
+        <div class="container">
+            <h2>Comprendre avant de payer des travaux</h2>
+            <p>Un diagnostic neutre peut vous éviter un traitement inutile.</p>
+            <div class="lp-final-ctas">
+                <a href="#" id="btn-appel-bas" class="btn-call"><i class="fas fa-phone" aria-hidden="true"></i> <span data-numero-long>Appeler un expert</span></a>
+                <a href="#contact" class="btn-secondary">Être rappelé</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="lp-footer">
+        <div class="footer-bottom">
+            <p>&copy; 2026 DIAGO · Diagnostic humidité indépendant · <a href="/mentions-legales.html">Mentions légales</a></p>
+        </div>
+    </footer>
+
+    <!-- Bouton d'appel fixe sur mobile -->
+    <div id="sticky-cta-mobile" class="sticky-mobile-wrapper lp-sticky">
+        <a href="#" id="btn-appel-mobile">
+            <div class="sticky-btn-content">
+                <div class="sticky-text">
+                    <span class="sticky-label">Parler à un expert</span>
+                    <span class="sticky-sub" data-numero>Appel direct</span>
+                </div>
+                <div class="sticky-call-action">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="white" aria-hidden="true"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.49-5.15-3.8-6.62-6.65l1.97-1.6c.26-.29.35-.69.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3.25 3 3.25 3 3.81c0 8.61 7.43 16.5 16.5 16.5.56 0 1.11-.45 1.11-.99v-3.85c0-.54-.45-.99-.99-.99z"/></svg>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <script src="/js/main.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Numéro découpé pour limiter la collecte par les robots (même principe que le reste du site)
+        var p = ["06", "82", "53", "39", "50"];
+        var numero = p.join('');
+        var affichage = p.join(' ');
+
+        document.querySelectorAll('[data-numero]').forEach(function (el) { el.textContent = affichage; });
+        document.querySelectorAll('[data-numero-long]').forEach(function (el) { el.textContent = 'Appeler le ' + affichage; });
+
+        // Barre d'appel mobile : affichée une fois le premier bouton d'appel dépassé
+        var sticky = document.getElementById('sticky-cta-mobile');
+        function majSticky() { if (sticky) { sticky.classList.toggle('is-visible', window.scrollY > 420); } }
+        window.addEventListener('scroll', majSticky, { passive: true });
+        majSticky();
+
+        ['btn-appel-header', 'btn-appel-hero', 'btn-appel-bas', 'btn-appel-mobile'].forEach(function (id) {
+            var b = document.getElementById(id);
+            if (b) {
+                b.setAttribute('href', 'tel:' + numero);
+                b.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    window.location.href = 'tel:' + numero;
+                });
+            }
+        });
+    });
+    </script>
+</body>
+</html>
