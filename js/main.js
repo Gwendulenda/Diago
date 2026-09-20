@@ -49,8 +49,11 @@ if (mobileMenuToggle && mobileMenu) {
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        // Les liens "#" seuls (boutons d'appel) ne sont pas des ancres de défilement
+        if (!href || href === '#' || href.indexOf('#') !== 0) { return; }
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
+        const target = document.querySelector(href);
         if (target) {
             const headerOffset = 100;
             const elementPosition = target.getBoundingClientRect().top;
@@ -90,6 +93,18 @@ faqItems.forEach(item => {
 // FORM VALIDATION & SUBMISSION
 // ===================================
 
+// Affiche un message sous le formulaire (cette fonction manquait : les messages
+// d'erreur et de confirmation ne s'affichaient jamais).
+function showMessage(type, texte) {
+    const zone = document.getElementById('formMessage');
+    if (!zone) { return; }
+    zone.textContent = texte;
+    zone.style.display = 'block';
+    zone.style.color = (type === 'success') ? '#1e7e34' : '#d35400';
+    zone.style.fontWeight = '600';
+    zone.style.marginTop = '12px';
+}
+
 const contactForm = document.getElementById('contactForm');
 const formMessage = document.getElementById('formMessage');
 
@@ -98,29 +113,44 @@ if (contactForm) {
         e.preventDefault();
         
         // Récupération des données
-        // Note: On envoie des chaines vides ("") pour les champs supprimés visuellement
-        // afin de maintenir la compatibilité avec votre Google Sheet actuel.
+        // Colonnes du Google Sheet réutilisées (aucune modification du script Google) :
+        //   - "profile" contient la réponse à « Comment nous avez-vous connu ? »
+        //   - "ville" contient l'origine mesurée automatiquement (Google Ads, IA, recherche…)
+        const champSource = document.getElementById('source');
+        const origine = (window.DiagoTracking && window.DiagoTracking.origine) ? window.DiagoTracking.origine() : '';
         const formData = {
-            profile: "Non précisé", // Champ supprimé du visuel
-            nom: "",                // Champ supprimé du visuel
-            prenom: document.getElementById('prenom').value,
-            ville: "",              // Champ supprimé du visuel
-            codePostal: document.getElementById('codePostal').value,
+            profile: champSource && champSource.value ? champSource.value : "Non précisé",
+            nom: "",
+            prenom: document.getElementById('prenom').value.trim(),
+            ville: origine,
+            codePostal: document.getElementById('codePostal').value.trim(),
             telephone: document.getElementById('telephone').value,
-            email: document.getElementById('email').value, // Maintenant facultatif
-            message: document.getElementById('message').value, // Maintenant facultatif
+            email: document.getElementById('email').value.trim(),
+            message: document.getElementById('message').value,
             urgence: document.getElementById('urgence').checked,
             rgpd: document.getElementById('rgpd').checked,
             dateSubmission: new Date().toISOString()
         };
-        
-        // 1. Validation Email (UNIQUEMENT si rempli)
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (formData.email && formData.email.length > 0 && !emailRegex.test(formData.email)) {
-            showMessage('error', '⚠️ L\'adresse email saisie ne semble pas valide.');
+
+        // 0. Prénom obligatoire
+        if (!formData.prenom) {
+            showMessage('error', '⚠️ Merci d\'indiquer votre prénom.');
             return;
         }
-        
+
+        // 1. Validation Email (obligatoire)
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(formData.email)) {
+            showMessage('error', '⚠️ Merci d\'indiquer une adresse email valide.');
+            return;
+        }
+
+        // 1 bis. Source obligatoire (si le champ existe sur la page)
+        if (champSource && !champSource.value) {
+            showMessage('error', '⚠️ Merci d\'indiquer comment vous nous avez connus.');
+            return;
+        }
+
         // 2. Validation Téléphone (Toujours obligatoire)
         const phoneRegex = /^[0-9]{10}$/;
         const phoneClean = formData.telephone.replace(/\s/g, '');
@@ -159,11 +189,12 @@ if (contactForm) {
                 body: JSON.stringify(formData)
             });
 
-            // On vide le formulaire immédiatement après l'appel fetch réussi
+            // Demande envoyée : on la signale puis on redirige vers la page de remerciement,
+            // où la conversion Google Ads est enregistrée (une seule fois).
+            if (window.DiagoTracking) { window.DiagoTracking.marquerDemande(); }
             contactForm.reset();
-            
-            // On affiche le message de succès
-            showMessage('success', '✅ Demande reçue ! Un expert va vous rappeler sous 24h.');
+            window.location.href = '/merci.html';
+            return;
 
         } catch (error) {
             console.error('Form submission error:', error);
@@ -377,7 +408,7 @@ scrollTopButton.addEventListener('mouseleave', () => {
 console.log('%c🏠 Diagnostic Humidité Pro', 'color: #004d99; font-size: 24px; font-weight: bold;');
 console.log('%cExpertise indépendante en diagnostic d\'humidité', 'color: #666; font-size: 14px;');
 
-console.log('%cParis (75), Val-de-Marne (94), Seine-et-Marne (77) et Essonne (91)', 'color: #666; font-size: 14px;');
+
 
 
 
