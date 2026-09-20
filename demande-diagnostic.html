@@ -15,64 +15,102 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 
     <style>
-        /* ---- Ajustements propres à la page d'atterrissage ---- */
-        body { font-size: 17px; }
+        /* ===== Ajustements propres à la page d'atterrissage (le reste vient de style.css) ===== */
         .lp-header .header-content { justify-content: space-between; }
         .lp-header .diago-logo { pointer-events: none; }
-        .lp-header .btn-call { padding: 10px 18px; font-size: 1rem; }
-        .lp-hero { padding: 48px 0 56px; }
-        .lp-hero-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 48px; align-items: start; }
-        .lp-hero h1 { font-size: 2.4rem; line-height: 1.2; color: var(--primary-dark); margin-bottom: 16px; }
-        .lp-lead { font-size: 1.15rem; color: var(--gray-700); margin-bottom: 22px; line-height: 1.6; }
-        .lp-garanties { list-style: none; margin: 0 0 26px; padding: 0; display: grid; gap: 10px; }
-        .lp-garanties li { display: flex; gap: 12px; align-items: flex-start; font-weight: 600; color: var(--gray-800); }
-        .lp-garanties i { color: var(--accent-green); font-size: 1.2rem; margin-top: 3px; }
-        .lp-appel { display: flex; flex-direction: column; gap: 6px; align-items: flex-start; }
-        .lp-appel .btn-call { font-size: 1.2rem; padding: 16px 28px; }
-        .lp-appel small { color: var(--gray-600); }
-        .lp-form-card { background: var(--white); border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); padding: 28px; }
-        .lp-form-card h2 { font-size: 1.35rem; color: var(--primary-dark); margin-bottom: 4px; }
-        .lp-form-card .lp-form-sub { color: var(--gray-600); margin-bottom: 18px; font-size: 0.95rem; }
-        .lp-form-card .form-group { margin-bottom: 14px; }
-        .lp-form-card .btn-submit { width: 100%; font-size: 1.1rem; }
-        .lp-section { padding: 64px 0; }
+        .lp-header .btn-call { padding: 10px 20px; font-size: 0.95rem; }
+
+        /* Hero */
+        .lp-hero { padding: 56px 0 64px; }
+        .lp-hero-grid { display: grid; grid-template-columns: 1fr 460px; gap: 56px; align-items: center; }
+        .lp-hero h1 { font-size: 2.6rem; line-height: 1.15; color: var(--primary-dark); margin-bottom: 18px; font-weight: 800; }
+        .lp-lead { font-size: 1.15rem; color: var(--gray-700); line-height: 1.6; margin-bottom: 26px; max-width: 560px; }
+        .lp-hero .hero-features { margin-bottom: 30px; gap: 12px; }
+        .lp-hero .feature-badge { padding: 9px 16px; font-size: 0.95rem; }
+        .lp-hero .feature-badge i { color: var(--primary-medium); }
+        .lp-ctas { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+        .lp-ctas .btn-call { padding: 16px 30px; font-size: 1.1rem; }
+        .lp-ctas .lp-lien-form { color: var(--primary-medium); font-weight: 600; text-decoration: underline; }
+        .lp-zone { margin-top: 22px; color: var(--gray-600); font-size: 0.95rem; display: flex; gap: 8px; align-items: center; }
+        .lp-zone i { color: var(--primary-medium); }
+
+        /* Carte formulaire */
+        .lp-form-card { background: var(--white); border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); padding: 30px 28px; border-top: 5px solid var(--primary-medium); }
+        .lp-form-card h2 { font-size: 1.4rem; color: var(--primary-dark); margin-bottom: 4px; }
+        .lp-form-sub { color: var(--gray-600); font-size: 0.92rem; margin-bottom: 18px; }
+        .lp-form-card .contact-form { gap: 12px; }
+        .lp-form-card .form-row { gap: 12px; grid-template-columns: minmax(0,1fr) minmax(0,1fr); }
+        .lp-form-card .form-group { min-width: 0; }
+        .lp-form-card .form-group input:not([type=checkbox]), .lp-form-card .form-group select, .lp-form-card .form-group textarea { width: 100%; max-width: 100%; box-sizing: border-box; }
+        .lp-form-card .form-group label { margin-bottom: 5px; font-size: 0.9rem; }
+        .lp-form-card .form-group input:not([type=checkbox]),
+        .lp-form-card .form-group select,
+        .lp-form-card .form-group textarea { padding: 11px 13px; font-size: 1rem; }
+        .lp-form-card .checkbox-label { font-size: 0.9rem; gap: 10px; }
+        .lp-form-card .btn-submit { margin-top: 4px; }
+        .lp-form-note { text-align: center; color: var(--gray-600); font-size: 0.82rem; margin-top: 10px; }
+        .lp-form-note i { color: var(--accent-green); }
+
+        /* Sections */
+        .lp-section { padding: 72px 0; }
         .lp-section.alt { background: var(--gray-100); }
-        .lp-section h2 { font-size: 1.9rem; color: var(--primary-dark); text-align: center; margin-bottom: 12px; }
-        .lp-section .lp-intro { text-align: center; max-width: 720px; margin: 0 auto 36px; color: var(--gray-700); line-height: 1.7; }
+        .lp-titre { text-align: center; max-width: 760px; margin: 0 auto 40px; }
+        .lp-titre h2 { font-size: 2rem; color: var(--primary-dark); margin-bottom: 12px; }
+        .lp-titre p { color: var(--gray-700); line-height: 1.7; font-size: 1.05rem; }
+        .lp-comparaison { max-width: 900px; margin: 0 auto; }
+
+        /* Étapes */
         .lp-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-        .lp-step { background: var(--white); border-radius: var(--radius-lg); padding: 22px; box-shadow: var(--shadow-sm); }
-        .lp-step span { display: inline-flex; width: 36px; height: 36px; border-radius: 50%; background: var(--primary-medium); color: #fff; font-weight: 800; align-items: center; justify-content: center; margin-bottom: 10px; }
+        .lp-step { background: var(--white); border-radius: var(--radius-lg); padding: 24px 20px; box-shadow: var(--shadow-md); position: relative; }
+        .lp-step .lp-num { display: inline-flex; width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, var(--primary-medium), var(--primary-light)); color: #fff; font-weight: 800; align-items: center; justify-content: center; margin-bottom: 12px; }
         .lp-step h3 { font-size: 1.05rem; color: var(--primary-dark); margin-bottom: 6px; }
         .lp-step p { color: var(--gray-700); font-size: 0.95rem; line-height: 1.55; }
-        .lp-final { text-align: center; background: linear-gradient(135deg, #003366 0%, #004d99 100%); color: #fff; }
-        .lp-final h2 { color: #fff; }
-        .lp-final p { color: #dbeafe; margin-bottom: 24px; }
-        .lp-final .lp-final-ctas { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-        .lp-final .btn-secondary { background: #fff; color: var(--primary-dark); }
-        .lp-footer { background: var(--primary-dark); color: #cbd5e1; text-align: center; padding: 22px 16px 110px; font-size: 0.9rem; }
-        .lp-footer a { color: #cbd5e1; }
-        .sticky-mobile-wrapper.lp-sticky { display: none; }
-        .faq-item .faq-answer p { line-height: 1.65; }
 
-        @media (max-width: 900px) {
-            .lp-hero-grid { grid-template-columns: 1fr; gap: 28px; }
-            .lp-hero h1 { font-size: 1.85rem; }
+        /* Dernier appel à l'action */
+        .lp-final { text-align: center; background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-medium) 100%); color: #fff; }
+        .lp-final h2 { color: #fff; font-size: 2rem; margin-bottom: 10px; }
+        .lp-final p { color: #dbeafe; margin-bottom: 26px; font-size: 1.05rem; }
+        .lp-final .lp-ctas { justify-content: center; }
+        .lp-final .btn-secondary { background: #fff; color: var(--primary-dark); border-color: #fff; }
+
+        .lp-footer { background: var(--primary-dark); color: #cbd5e1; text-align: center; padding: 22px 16px; font-size: 0.9rem; border-top: 1px solid rgba(255,255,255,.1); }
+        .lp-footer a { color: #cbd5e1; }
+        .lp-footer .footer-bottom { border: 0; padding: 0; margin: 0; }
+
+        .sticky-mobile-wrapper.lp-sticky { display: none; }
+
+        @media (max-width: 1024px) {
+            .lp-hero-grid { grid-template-columns: 1fr 420px; gap: 36px; }
+            .lp-hero h1 { font-size: 2.2rem; }
             .lp-steps { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 860px) {
+            .lp-hero { padding: 30px 0 44px; }
+            .lp-hero-grid { grid-template-columns: 1fr; gap: 26px; }
+            .lp-hero h1 { font-size: 1.9rem; }
+            .lp-lead { font-size: 1.05rem; margin-bottom: 18px; }
+            .lp-hero .hero-features { margin-bottom: 20px; }
+            .lp-zone { display: none; }
             .sticky-mobile-wrapper.lp-sticky { display: block; }
+            .lp-footer { padding-bottom: 110px; }
         }
         @media (max-width: 560px) {
-            .lp-hero { padding: 28px 0 40px; }
-            .lp-steps { grid-template-columns: 1fr; }
             .lp-header .btn-call { display: none; }
-            .lp-appel { align-items: center; }
-            .lp-appel .btn-call { width: 92%; }
-            .lp-form-card { padding: 20px; }
-            .lp-section { padding: 48px 0; }
-            .lp-section h2 { font-size: 1.5rem; }
+            .lp-hero h1 { font-size: 1.5rem; }
+            .lp-ctas .btn-call { font-size: 1rem; padding: 15px 18px; }
+            .lp-hero .feature-badge { font-size: 0.85rem; padding: 7px 12px; }
+            .lp-ctas { flex-direction: column; align-items: stretch; text-align: center; }
+            .lp-ctas .btn-call { width: 100%; }
+            .lp-form-card { padding: 22px 18px; }
+            .lp-form-card .form-row { grid-template-columns: 1fr; }
+            .lp-section { padding: 52px 0; }
+            .lp-titre h2, .lp-final h2 { font-size: 1.55rem; }
+            .lp-steps { grid-template-columns: 1fr; }
+            .rapport-details { padding: 28px 20px; }
         }
     </style>
 </head>
@@ -102,15 +140,15 @@
                         <span class="tagline">Comprendre l'humidité avant les travaux</span>
                     </div>
                 </div>
-                <a href="#" id="btn-appel-header" class="btn-call" aria-label="Appeler DIAGO">
-                    <i class="fas fa-phone" aria-hidden="true"></i>
-                    <span class="lp-num-header" data-numero>Appeler</span>
+                <a href="#" id="btn-appel-header" class="btn-call" aria-label="Appeler gratuitement">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.49-5.15-3.8-6.62-6.65l1.97-1.6c.26-.29.35-.69.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3.25 3 3.25 3 3.81c0 8.61 7.43 16.5 16.5 16.5.56 0 1.11-.45 1.11-.99v-3.85c0-.54-.45-.99-.99-.99z"/></svg>
+                    <span>Appeler</span>
                 </a>
             </div>
         </div>
     </header>
 
-    <!-- 1. Accroche + appel + formulaire (visible sans faire défiler) -->
+    <!-- 1. Accroche + appel + formulaire -->
     <section class="hero lp-hero">
         <div class="container">
             <div class="lp-hero-grid">
@@ -118,41 +156,46 @@
                     <h1>Diagnostic humidité <span class="highlight">indépendant</span> en Île-de-France</h1>
                     <p class="lp-lead">Un expert identifie l'origine réelle de votre problème d'humidité et vous explique quoi faire. Nous ne vendons aucun travaux : notre seul intérêt est de trouver la bonne cause.</p>
 
-                    <ul class="lp-garanties">
-                        <li><i class="fas fa-check-circle" aria-hidden="true"></i> Aucune vente de travaux, aucun conflit d'intérêt</li>
-                        <li><i class="fas fa-check-circle" aria-hidden="true"></i> Rapport écrit remis le jour de la visite</li>
-                        <li><i class="fas fa-check-circle" aria-hidden="true"></i> Intervention sous 7 jours dans toute l'Île-de-France</li>
-                    </ul>
-
-                    <div class="lp-appel">
-                        <a href="#" id="btn-appel-hero" class="btn-call">
-                            <i class="fas fa-phone" aria-hidden="true"></i>
-                            <span data-numero-long>Appeler un expert</span>
-                        </a>
-                        <small>Ou laissez vos coordonnées : nous vous rappelons.</small>
+                    <div class="hero-features">
+                        <div class="feature-badge"><i class="fas fa-shield-halved" aria-hidden="true"></i><span>Aucune vente de travaux</span></div>
+                        <div class="feature-badge"><i class="fas fa-file-lines" aria-hidden="true"></i><span>Rapport remis le jour J</span></div>
+                        <div class="feature-badge"><i class="fas fa-calendar-check" aria-hidden="true"></i><span>Intervention sous 7 jours</span></div>
                     </div>
+
+                    <div class="lp-ctas">
+                        <a href="#" id="btn-appel-hero" class="btn-call">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.49-5.15-3.8-6.62-6.65l1.97-1.6c.26-.29.35-.69.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3.25 3 3.25 3 3.81c0 8.61 7.43 16.5 16.5 16.5.56 0 1.11-.45 1.11-.99v-3.85c0-.54-.45-.99-.99-.99z"/></svg>
+                            Appel gratuit — Réponse immédiate
+                        </a>
+                    </div>
+
+                    <p class="lp-zone"><i class="fas fa-location-dot" aria-hidden="true"></i> Paris et toute l'Île-de-France : 75, 77, 78, 91, 92, 93, 94, 95</p>
                 </div>
 
                 <div class="lp-form-card" id="contact">
                     <h2>Être rappelé par un expert</h2>
-                    <p class="lp-form-sub">Sans engagement. Rappel sous 24 h maximum, souvent dans la journée.</p>
+                    <p class="lp-form-sub">Sans engagement. Rappel sous 24 h, souvent dans la journée.</p>
 
                     <form id="contactForm" class="contact-form" novalidate>
-                        <div class="form-group">
-                            <label for="prenom">Prénom *</label>
-                            <input type="text" id="prenom" name="prenom" required autocomplete="given-name" placeholder="Votre prénom">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="prenom">Prénom *</label>
+                                <input type="text" id="prenom" name="prenom" required autocomplete="given-name" placeholder="Votre prénom">
+                            </div>
+                            <div class="form-group">
+                                <label for="telephone">Téléphone *</label>
+                                <input type="tel" id="telephone" name="telephone" required autocomplete="tel" inputmode="tel" placeholder="06 00 00 00 00">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="telephone">Téléphone *</label>
-                            <input type="tel" id="telephone" name="telephone" required autocomplete="tel" inputmode="tel" placeholder="06 00 00 00 00">
-                        </div>
-                        <div class="form-group">
-                            <label for="codePostal">Code postal *</label>
-                            <input type="text" id="codePostal" name="codePostal" required autocomplete="postal-code" inputmode="numeric" maxlength="5" placeholder="Ex : 94000">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email *</label>
-                            <input type="email" id="email" name="email" required autocomplete="email" placeholder="vous@exemple.fr">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="codePostal">Code postal *</label>
+                                <input type="text" id="codePostal" name="codePostal" required autocomplete="postal-code" inputmode="numeric" maxlength="5" placeholder="Ex : 94000">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" name="email" required autocomplete="email" placeholder="vous@exemple.fr">
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="source">Comment nous avez-vous connu ? *</label>
@@ -173,7 +216,7 @@
                         <div class="form-group checkbox-group">
                             <label class="checkbox-label">
                                 <input type="checkbox" id="urgence" name="urgence">
-                                <span>Situation urgente (intervention sous 48 h)</span>
+                                <span style="font-weight: 600; color: #d35400;">Situation urgente (intervention sous 48 h)</span>
                             </label>
                         </div>
                         <div class="form-group checkbox-group">
@@ -184,69 +227,105 @@
                         </div>
                         <button type="submit" class="btn-submit btn-expert">
                             <i class="fas fa-phone-volume" aria-hidden="true"></i>
-                            Être rappelé
+                            Être rappelé par un expert
                         </button>
                         <div id="formMessage" class="form-message" role="alert"></div>
                     </form>
+                    <p class="lp-form-note"><i class="fas fa-lock" aria-hidden="true"></i> Vos coordonnées servent uniquement à vous recontacter.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 2. Pourquoi un diagnostic indépendant -->
-    <section class="lp-section">
+    <!-- 2. Bandeau de confiance (identique à l'accueil) -->
+    <section class="trust-section">
         <div class="container">
-            <h2>Pourquoi un diagnostic indépendant ?</h2>
-            <p class="lp-intro">Beaucoup de diagnostics « gratuits » sont réalisés par des entreprises qui vendent ensuite le traitement. Le risque : un traitement coûteux qui ne correspond pas à la vraie cause. Condensation, infiltration, fuite ou remontées capillaires ne se traitent pas du tout de la même façon.</p>
-            <div class="comparison-card">
+            <div class="trust-grid">
+                <div class="trust-item">
+                    <div class="trust-icon"><i class="fas fa-user-tie" aria-hidden="true"></i></div>
+                    <h4>Expert Indépendant</h4>
+                    <p>Aucun lien avec des entreprises de travaux</p>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon"><i class="fas fa-file-contract" aria-hidden="true"></i></div>
+                    <h4>Rapport Détaillé</h4>
+                    <p>Document exploitable par tous les professionnels</p>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon"><i class="fas fa-tachometer-alt" aria-hidden="true"></i></div>
+                    <h4>Mesures Précises</h4>
+                    <p>Équipements professionnels calibrés</p>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon"><i class="fas fa-bolt" aria-hidden="true"></i></div>
+                    <h4>Livraison Rapide</h4>
+                    <p>Rapport remis le jour de la visite</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Pourquoi un diagnostic indépendant -->
+    <section class="lp-section alt">
+        <div class="container">
+            <div class="lp-titre">
+                <h2>Pourquoi un diagnostic indépendant ?</h2>
+                <p>Beaucoup de diagnostics « gratuits » sont réalisés par des entreprises qui vendent ensuite le traitement. Condensation, infiltration, fuite ou remontées capillaires ne se traitent pas du tout de la même façon : se tromper de cause, c'est payer des travaux qui ne règlent rien.</p>
+            </div>
+            <div class="comparison-card lp-comparaison">
                 <div class="comparison-item bad">
                     <i class="fas fa-times-circle" aria-hidden="true"></i>
                     <h4>Diagnostic commercial</h4>
                     <ul>
-                        <li>Objectif : vendre un traitement</li>
-                        <li>Solution souvent décidée d'avance</li>
+                        <li>Objectif de vente</li>
+                        <li>Analyse superficielle</li>
+                        <li>Solutions imposées</li>
                         <li>Conflit d'intérêt</li>
                     </ul>
                 </div>
                 <div class="comparison-item good">
                     <i class="fas fa-check-circle" aria-hidden="true"></i>
-                    <h4>Diagnostic DIAGO</h4>
+                    <h4>Diagnostic indépendant</h4>
                     <ul>
-                        <li>Objectif : trouver la vraie cause</li>
-                        <li>Mesures et analyse sur place</li>
-                        <li>Vous choisissez librement l'entreprise</li>
+                        <li>Objectif technique</li>
+                        <li>Analyse approfondie</li>
+                        <li>Préconisations neutres</li>
+                        <li>Total indépendance</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 3. Ce que contient le rapport -->
-    <section class="lp-section alt">
+    <!-- 4. Le rapport (même présentation que l'accueil) -->
+    <section class="lp-section">
         <div class="container">
-            <h2>Ce que vous recevez</h2>
-            <p class="lp-intro">Un rapport clair, utilisable par n'importe quel professionnel, remis le jour même.</p>
-            <div class="rapport-grid">
-                <div class="rapport-item"><i class="fas fa-search" aria-hidden="true"></i><span>Les causes identifiées, ou les hypothèses classées par probabilité</span></div>
-                <div class="rapport-item"><i class="fas fa-ruler-combined" aria-hidden="true"></i><span>Les mesures relevées et leur interprétation</span></div>
-                <div class="rapport-item"><i class="fas fa-lightbulb" aria-hidden="true"></i><span>Les solutions adaptées à votre situation</span></div>
-                <div class="rapport-item"><i class="fas fa-triangle-exclamation" aria-hidden="true"></i><span>Le niveau d'urgence et les priorités</span></div>
-                <div class="rapport-item"><i class="fas fa-file-signature" aria-hidden="true"></i><span>Des éléments utiles pour vos devis, votre syndic ou votre assurance</span></div>
-                <div class="rapport-item"><i class="fas fa-comments" aria-hidden="true"></i><span>Un échange après la visite, par exemple pour relire un devis</span></div>
+            <div class="rapport-details">
+                <h3><i class="fas fa-file-alt" aria-hidden="true"></i> Ce que vous recevez le jour même</h3>
+                <div class="rapport-grid">
+                    <div class="rapport-item"><i class="fas fa-search" aria-hidden="true"></i><span>Causes identifiées ou hypothèses hiérarchisées</span></div>
+                    <div class="rapport-item"><i class="fas fa-book" aria-hidden="true"></i><span>Justification technique détaillée</span></div>
+                    <div class="rapport-item"><i class="fas fa-lightbulb" aria-hidden="true"></i><span>Préconisations adaptées à votre situation</span></div>
+                    <div class="rapport-item"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i><span>Niveau d'urgence et priorisation</span></div>
+                    <div class="rapport-item"><i class="fas fa-clipboard-check" aria-hidden="true"></i><span>Éléments exploitables pour devis, maîtrise d'œuvre, assurance</span></div>
+                    <div class="rapport-item"><i class="fas fa-comments" aria-hidden="true"></i><span>Échange possible après la visite, par exemple pour relire un devis</span></div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- 4. Déroulement -->
-    <section class="lp-section">
+    <!-- 5. Déroulement -->
+    <section class="lp-section alt">
         <div class="container">
-            <h2>Comment ça se passe</h2>
-            <p class="lp-intro">Simple, rapide, sans surprise.</p>
+            <div class="lp-titre">
+                <h2>Comment ça se passe</h2>
+                <p>Simple, rapide, sans surprise.</p>
+            </div>
             <div class="lp-steps">
-                <div class="lp-step"><span>1</span><h3>Premier appel</h3><p>Vous décrivez la situation. Nous vous indiquons le tarif et fixons un rendez-vous.</p></div>
-                <div class="lp-step"><span>2</span><h3>Visite sur place</h3><p>Environ une heure : inspection, mesures, contrôle des zones sensibles.</p></div>
-                <div class="lp-step"><span>3</span><h3>Explications</h3><p>Nous vous expliquons sur place ce qui se passe et pourquoi.</p></div>
-                <div class="lp-step"><span>4</span><h3>Rapport le jour même</h3><p>Vous recevez un rapport écrit, avec les solutions à envisager.</p></div>
+                <div class="lp-step"><span class="lp-num">1</span><h3>Premier appel</h3><p>Vous décrivez la situation. Nous vous indiquons le tarif et fixons un rendez-vous.</p></div>
+                <div class="lp-step"><span class="lp-num">2</span><h3>Visite sur place</h3><p>Environ une heure : inspection, mesures, contrôle des zones sensibles.</p></div>
+                <div class="lp-step"><span class="lp-num">3</span><h3>Explications</h3><p>Nous vous expliquons sur place ce qui se passe et pourquoi.</p></div>
+                <div class="lp-step"><span class="lp-num">4</span><h3>Rapport le jour même</h3><p>Vous recevez un rapport écrit, avec les solutions à envisager.</p></div>
             </div>
         </div>
     </section>
@@ -257,22 +336,22 @@
     (prénom + initiale du nom + ville). Retirez les balises de commentaire
     autour de cette section pour l'afficher.
 
-    <section class="lp-section alt">
+    <section class="lp-section">
         <div class="container">
-            <h2>Ils nous ont fait confiance</h2>
-            <div class="rapport-grid">
-                <div class="rapport-item"><i class="fas fa-quote-left" aria-hidden="true"></i><span>« Texte du témoignage. » — Prénom X., Ville</span></div>
-                <div class="rapport-item"><i class="fas fa-quote-left" aria-hidden="true"></i><span>« Texte du témoignage. » — Prénom X., Ville</span></div>
-                <div class="rapport-item"><i class="fas fa-quote-left" aria-hidden="true"></i><span>« Texte du témoignage. » — Prénom X., Ville</span></div>
+            <div class="lp-titre"><h2>Ils nous ont fait confiance</h2></div>
+            <div class="lp-steps">
+                <div class="lp-step"><p>« Texte du témoignage. »</p><h3>Prénom X., Ville</h3></div>
+                <div class="lp-step"><p>« Texte du témoignage. »</p><h3>Prénom X., Ville</h3></div>
+                <div class="lp-step"><p>« Texte du témoignage. »</p><h3>Prénom X., Ville</h3></div>
             </div>
         </div>
     </section>
     -->
 
-    <!-- 5. Questions fréquentes -->
-    <section class="faq-section lp-section alt" id="faq">
+    <!-- 6. Questions fréquentes -->
+    <section class="faq-section" id="faq">
         <div class="container">
-            <h2>Questions fréquentes</h2>
+            <div class="lp-titre"><h2>Questions fréquentes</h2></div>
             <div class="faq-grid">
                 <div class="faq-item">
                     <div class="faq-question"><i class="fas fa-chevron-right" aria-hidden="true"></i><h3>Le diagnostic est-il payant ?</h3></div>
@@ -280,7 +359,7 @@
                 </div>
                 <div class="faq-item">
                     <div class="faq-question"><i class="fas fa-chevron-right" aria-hidden="true"></i><h3>Réalisez-vous les travaux ensuite ?</h3></div>
-                    <div class="faq-answer"><p>Non, jamais. Nous vous indiquons les solutions adaptées, et vous restez libre de choisir l'entreprise qui les réalisera. Nous pouvons ensuite relire les devis que vous recevez.</p></div>
+                    <div class="faq-answer"><p>Non, jamais. Nous vous indiquons les solutions adaptées et vous restez libre de choisir l'entreprise qui les réalisera. Nous pouvons ensuite relire les devis que vous recevez.</p></div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question"><i class="fas fa-chevron-right" aria-hidden="true"></i><h3>Combien de temps dure la visite ?</h3></div>
@@ -294,13 +373,16 @@
         </div>
     </section>
 
-    <!-- 6. Dernier appel à l'action -->
+    <!-- 7. Dernier appel à l'action -->
     <section class="lp-section lp-final">
         <div class="container">
             <h2>Comprendre avant de payer des travaux</h2>
             <p>Un diagnostic neutre peut vous éviter un traitement inutile.</p>
-            <div class="lp-final-ctas">
-                <a href="#" id="btn-appel-bas" class="btn-call"><i class="fas fa-phone" aria-hidden="true"></i> <span data-numero-long>Appeler un expert</span></a>
+            <div class="lp-ctas">
+                <a href="#" id="btn-appel-bas" class="btn-call">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.49-5.15-3.8-6.62-6.65l1.97-1.6c.26-.29.35-.69.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3.25 3 3.25 3 3.81c0 8.61 7.43 16.5 16.5 16.5.56 0 1.11-.45 1.11-.99v-3.85c0-.54-.45-.99-.99-.99z"/></svg>
+                    Appel gratuit
+                </a>
                 <a href="#contact" class="btn-secondary">Être rappelé</a>
             </div>
         </div>
@@ -312,13 +394,13 @@
         </div>
     </footer>
 
-    <!-- Bouton d'appel fixe sur mobile -->
+    <!-- Bouton d'appel fixe sur mobile (identique au reste du site) -->
     <div id="sticky-cta-mobile" class="sticky-mobile-wrapper lp-sticky">
         <a href="#" id="btn-appel-mobile">
             <div class="sticky-btn-content">
                 <div class="sticky-text">
-                    <span class="sticky-label">Parler à un expert</span>
-                    <span class="sticky-sub" data-numero>Appel direct</span>
+                    <span class="sticky-label">Nous contacter</span>
+                    <span class="sticky-sub">☎️ Appel gratuit</span>
                 </div>
                 <div class="sticky-call-action">
                     <svg viewBox="0 0 24 24" width="24" height="24" fill="white" aria-hidden="true"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.49-5.15-3.8-6.62-6.65l1.97-1.6c.26-.29.35-.69.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3.25 3 3.25 3 3.81c0 8.61 7.43 16.5 16.5 16.5.56 0 1.11-.45 1.11-.99v-3.85c0-.54-.45-.99-.99-.99z"/></svg>
@@ -330,30 +412,22 @@
     <script src="/js/main.js"></script>
     <script>
     document.addEventListener('DOMContentLoaded', function () {
-        // Numéro découpé pour limiter la collecte par les robots (même principe que le reste du site)
-        var p = ["06", "82", "53", "39", "50"];
-        var numero = p.join('');
-        var affichage = p.join(' ');
-
-        document.querySelectorAll('[data-numero]').forEach(function (el) { el.textContent = affichage; });
-        document.querySelectorAll('[data-numero-long]').forEach(function (el) { el.textContent = 'Appeler le ' + affichage; });
-
-        // Barre d'appel mobile : affichée une fois le premier bouton d'appel dépassé
-        var sticky = document.getElementById('sticky-cta-mobile');
-        function majSticky() { if (sticky) { sticky.classList.toggle('is-visible', window.scrollY > 420); } }
-        window.addEventListener('scroll', majSticky, { passive: true });
-        majSticky();
-
+        // Numéro découpé et jamais affiché (même principe que le reste du site)
+        var part1 = "06", part2 = "82", part3 = "53", part4 = "39", part5 = "50";
+        function lancerAppel(e) {
+            e.preventDefault();
+            window.location.href = 'tel:' + part1 + part2 + part3 + part4 + part5;
+        }
         ['btn-appel-header', 'btn-appel-hero', 'btn-appel-bas', 'btn-appel-mobile'].forEach(function (id) {
             var b = document.getElementById(id);
-            if (b) {
-                b.setAttribute('href', 'tel:' + numero);
-                b.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    window.location.href = 'tel:' + numero;
-                });
-            }
+            if (b) { b.addEventListener('click', lancerAppel); }
         });
+
+        // Barre d'appel mobile : affichée une fois le haut de page dépassé
+        var sticky = document.getElementById('sticky-cta-mobile');
+        function majSticky() { if (sticky) { sticky.classList.toggle('is-visible', window.scrollY > 500); } }
+        window.addEventListener('scroll', majSticky, { passive: true });
+        majSticky();
     });
     </script>
 </body>
