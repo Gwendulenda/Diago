@@ -45,58 +45,70 @@
 
     <!-- Schema.org (JSON-LD) : Crucial pour le SEO Local -->
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "DIAGO - Diagnostic Humidité Indépendant",
+  "image": "https://diago-humidite.fr/favicon.png",
+  "url": "https://diago-humidite.fr/",
+  "address": {
+    "@type": "PostalAddress",
+    "addressRegion": "Île-de-France",
+    "addressCountry": "FR"
+  },
+  "geo": {
+    "@type": "GeoShape",
+    "region": "Île-de-France : Paris, Hauts-de-Seine, Seine-Saint-Denis, Val-de-Marne, Seine-et-Marne, Yvelines, Essonne, Val-d'Oise"
+  },
+  "areaServed": [
     {
-      "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "DIAGO - Diagnostic Humidité Indépendant",
-      "image": "https://diago-humidite.fr/favicon.png",
-      "url": "https://diago-humidite.fr/",
-      "address": {
-        "@type": "PostalAddress",
-        "addressRegion": "Île-de-France",
-        "addressCountry": "FR"
-      },
-      "geo": {
-        "@type": "GeoShape",
-        "region": "Île-de-France, Paris, Hauts-de-Seine, Val-de-Marne, Seine-et-Marne, Essonne"
-      },
-      "areaServed": [
-        {
-            "@type": "City",
-            "name": "Paris"
-        },
-        {
-            "@type": "AdministrativeArea",
-            "name": "Hauts-de-Seine"
-        },
-        {
-            "@type": "AdministrativeArea",
-            "name": "Val-de-Marne"
-        },
-        {
-            "@type": "AdministrativeArea",
-            "name": "Seine-et-Marne"
-        },
-        {
-            "@type": "AdministrativeArea",
-            "name": "Essonne"
-        }
-      ],
-      "priceRange": "$$",
-      "description": "Expertise technique indépendante en humidité pour particuliers et professionnels. Diagnostic neutre sans vente de travaux.",
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday"
-        ],
-        "opens": "09:00",
-        "closes": "19:00"
-      }
+      "@type": "City",
+      "name": "Paris"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Hauts-de-Seine"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Seine-Saint-Denis"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Val-de-Marne"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Seine-et-Marne"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Yvelines"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Essonne"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Val-d'Oise"
     }
+  ],
+  "priceRange": "$$",
+  "description": "Expertise technique indépendante en humidité pour particuliers et professionnels. Diagnostic neutre sans vente de travaux.",
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "opens": "09:00",
+    "closes": "19:00"
+  }
+}
     </script>
 </head>
 <body>
@@ -183,7 +195,7 @@
                     </div>
                     <div class="zone-intervention">
                         <i class="fas fa-location-dot" aria-hidden="true"></i>
-                        <span>Intervention en Île-de-France - <strong><a href="/diagnostic-humidite-paris-75.html">Paris (75)</a></strong> , <strong><a href="/diagnostic-humidite-val-de-marne-94.html">Val de Marne (94)</a></strong> , <strong><a href="/diagnostic-humidite-seine-et-marne-77.html">Seine et Marne (77)</a></strong> , <strong><a href="/diagnostic-humidite-hauts-de-seine-92.html">Hauts-de-Seine (92)</a></strong> et <strong><a href="/diagnostic-humidite-essonne-91.html">Essonne (91)</a></strong></span>
+                        <span>Intervention en Île-de-France - <strong><a href="/diagnostic-humidite-paris-75.html">Paris (75)</a></strong>, <strong><a href="/diagnostic-humidite-hauts-de-seine-92.html">Hauts-de-Seine (92)</a></strong>, <strong><a href="/diagnostic-humidite-seine-saint-denis-93.html">Seine-Saint-Denis (93)</a></strong>, <strong><a href="/diagnostic-humidite-val-de-marne-94.html">Val-de-Marne (94)</a></strong>, <strong><a href="/diagnostic-humidite-seine-et-marne-77.html">Seine-et-Marne (77)</a></strong>, <strong><a href="/diagnostic-humidite-yvelines-78.html">Yvelines (78)</a></strong>, <strong><a href="/diagnostic-humidite-essonne-91.html">Essonne (91)</a></strong> et <strong><a href="/diagnostic-humidite-val-d-oise-95.html">Val-d'Oise (95)</a></strong></span>
                     </div>
                 </div>
                 <div class="hero-image">
@@ -525,7 +537,7 @@
                         <h3 itemprop="name">Intervenez-vous dans toute l'Île-de-France ?</h3>
                     </div>
                     <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                      <p itemprop="text">Nous intervenons principalement dans Paris (75), les Hauts-de-Seine (92), le Val-de-Marne (94), la Seine-et-Marne (77) et l'Essonne (91), avec possibilité d'extension selon les demandes.</p>
+                      <p itemprop="text">Oui. Nous intervenons dans toute l'Île-de-France : Paris (75), Hauts-de-Seine (92), Seine-Saint-Denis (93), Val-de-Marne (94), Seine-et-Marne (77), Yvelines (78), Essonne (91) et Val-d'Oise (95).</p>
                     </div>
                 </div>
                 <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
@@ -595,7 +607,7 @@
                         <i class="fas fa-map-marked-alt" aria-hidden="true"></i>
                         <div>
                             <h4>Zone d'intervention</h4>
-                            <p> Île-de-France - <strong><a href="/diagnostic-humidite-paris-75.html">Paris (75)</a></strong> , <strong><a href="/diagnostic-humidite-val-de-marne-94.html">Val de Marne (94)</a></strong> , <strong><a href="/diagnostic-humidite-seine-et-marne-77.html">Seine et Marne (77)</a></strong> , <strong><a href="/diagnostic-humidite-hauts-de-seine-92.html">Hauts-de-Seine (92)</a></strong> et <strong><a href="/diagnostic-humidite-essonne-91.html">Essonne (91)</a></strong></p>
+                            <p> Île-de-France - <strong><a href="/diagnostic-humidite-paris-75.html">Paris (75)</a></strong>, <strong><a href="/diagnostic-humidite-hauts-de-seine-92.html">Hauts-de-Seine (92)</a></strong>, <strong><a href="/diagnostic-humidite-seine-saint-denis-93.html">Seine-Saint-Denis (93)</a></strong>, <strong><a href="/diagnostic-humidite-val-de-marne-94.html">Val-de-Marne (94)</a></strong>, <strong><a href="/diagnostic-humidite-seine-et-marne-77.html">Seine-et-Marne (77)</a></strong>, <strong><a href="/diagnostic-humidite-yvelines-78.html">Yvelines (78)</a></strong>, <strong><a href="/diagnostic-humidite-essonne-91.html">Essonne (91)</a></strong> et <strong><a href="/diagnostic-humidite-val-d-oise-95.html">Val-d'Oise (95)</a></strong></p>
                         </div>
                     </div>
                 </div>
@@ -834,7 +846,7 @@
     </div>
     
     <p>Expert indépendant en diagnostic d'humidité</p>
-    <p>Paris (75), Hauts-de-Seine (92), Val-de-Marne (94), Seine-et-Marne (77) et Essonne (91)</p>
+    <p>Paris (75) et toute l'Île-de-France</p>
 </div>
                 <div class="footer-section">
                     <h4>Services</h4>
@@ -859,9 +871,12 @@
                     <ul>
                         <li><a href="/diagnostic-humidite-paris-75.html">Paris (75)</a></li>
                         <li><a href="/diagnostic-humidite-hauts-de-seine-92.html">Hauts-de-Seine (92)</a></li>
-                        <li><a href="/diagnostic-humidite-val-de-marne-94.html">Val de Marne (94)</a></li>
-                        <li><a href="/diagnostic-humidite-seine-et-marne-77.html">Seine et Marne (77)</a></li>
+                        <li><a href="/diagnostic-humidite-seine-saint-denis-93.html">Seine-Saint-Denis (93)</a></li>
+                        <li><a href="/diagnostic-humidite-val-de-marne-94.html">Val-de-Marne (94)</a></li>
+                        <li><a href="/diagnostic-humidite-seine-et-marne-77.html">Seine-et-Marne (77)</a></li>
+                        <li><a href="/diagnostic-humidite-yvelines-78.html">Yvelines (78)</a></li>
                         <li><a href="/diagnostic-humidite-essonne-91.html">Essonne (91)</a></li>
+                        <li><a href="/diagnostic-humidite-val-d-oise-95.html">Val-d'Oise (95)</a></li>
                     </ul>
                 </div>
             </div>
