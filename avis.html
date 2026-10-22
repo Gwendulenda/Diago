@@ -98,6 +98,12 @@
                         </select>
                     </div>
                     <div class="champ">
+                        <label class="titre" for="intervention">Mois de votre diagnostic</label>
+                        <select id="intervention" name="intervention">
+                            <option value="">Je ne sais plus</option>
+                        </select>
+                    </div>
+                    <div class="champ">
                         <span class="titre" style="display:block;font-weight:600;color:var(--gray-800);margin-bottom:6px;">Votre note *</span>
                         <div class="etoiles" role="radiogroup" aria-label="Votre note sur 5">
                             <input type="radio" id="n5" name="note" value="5"><label for="n5">5 ★</label>
@@ -122,7 +128,7 @@
                     <div id="avisMessage" class="avis-message" role="status" aria-live="polite"></div>
                 </form>
 
-                <p class="avis-mention">Les témoignages publiés sont ceux de clients ayant bénéficié d'un diagnostic DIAGO. Ils sont publiés avec leur accord, datés, sans modification de leur contenu, et ne donnent lieu à aucune contrepartie. Vous pouvez demander à tout moment le retrait de votre témoignage.</p>
+                <p class="avis-mention">Les avis publiés sont ceux de clients ayant bénéficié d'un diagnostic DIAGO. Chaque avis est lu avant publication ; il est publié avec votre accord, daté, sans modification de son contenu et sans contrepartie, quelle que soit la note. Vous pouvez demander à tout moment sa modification ou son retrait à contact@diago-humidite.fr. <a href="/avis-clients.html#modalites" style="color:inherit;text-decoration:underline;">Modalités de publication</a></p>
             </div>
         </div>
     </main>
@@ -135,10 +141,26 @@
         </div>
     </footer>
 
+    <script src="/js/avis-config.js"></script>
     <script>
-    // Adresse du script Google qui enregistre les avis dans le Google Sheet « Avis DIAGO ».
-    // À REMPLACER par l'adresse obtenue au déploiement du script (elle se termine par /exec).
-    var AVIS_URL = 'https://script.google.com/macros/s/AKfycbz7CPe6_q7uho1VzP61gHQtRnsofKfMXdt26gDSf7o7rA-E0JWr77hHUaImxkw1A5_K/exec';
+    // Adresse du script Google « Avis DIAGO » : elle est écrite dans js/avis-config.js (un seul endroit pour tout le site).
+    var AVIS_URL = window.DIAGO_AVIS_URL || '';
+
+    // Liste des 12 derniers mois pour le champ « Mois de votre diagnostic » (mois en cours sélectionné).
+    (function () {
+        var mois = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
+        var liste = document.getElementById('intervention');
+        var d = new Date();
+        d.setDate(1);
+        for (var k = 0; k < 12; k++) {
+            var o = document.createElement('option');
+            o.value = d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2);
+            o.textContent = mois[d.getMonth()] + ' ' + d.getFullYear();
+            if (k === 0) { o.selected = true; o.defaultSelected = true; }
+            liste.insertBefore(o, liste.lastElementChild);
+            d.setMonth(d.getMonth() - 1);
+        }
+    })();
 
     document.getElementById('avisForm').addEventListener('submit', async function (e) {
         e.preventDefault();
@@ -165,6 +187,7 @@
             bien: f.bien.value,
             note: note.value,
             temoignage: f.temoignage.value.trim(),
+            intervention: f.intervention.value,
             accord: f.accord.checked ? 'oui' : 'non',
             siteweb: f.siteweb.value
         };

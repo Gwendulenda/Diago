@@ -551,6 +551,20 @@
         </div>
     </section>
 
+    <!-- Avis clients : bloc masqué tant qu'aucun avis n'est publié.
+         Rempli automatiquement par js/temoignages.js avec les avis validés dans le Google Sheet « Avis DIAGO ». -->
+    <section id="avis" class="avis-section" data-avis-bloc hidden>
+        <div class="container">
+            <div class="section-header">
+                <i class="fas fa-comment-dots" aria-hidden="true"></i>
+                <h2>Ils nous ont fait confiance</h2>
+                <p class="section-subtitle">Les derniers avis de nos clients après leur diagnostic</p>
+            </div>
+            <div class="avis-liste" data-avis-liste data-max="3"></div>
+            <p class="avis-pied"><a href="/avis-clients.html">Voir tous les avis</a> · Avis publiés avec l'accord de leurs auteurs, sans contrepartie, après vérification de l'intervention. <a href="/avis-clients.html#modalites">Modalités de publication</a></p>
+        </div>
+    </section>
+
     <!-- FAQ Section -->
     <!-- Ajout de l'ID 'faq' pour que le lien du footer fonctionne -->
     <section id="faq" class="faq-section" itemscope itemtype="https://schema.org/FAQPage">
@@ -940,6 +954,10 @@
     
     <!-- Restauration du fichier JS principal (Formulaire Google Sheet, etc.) -->
     <script src="js/main.js"></script>
+
+    <!-- Avis clients : adresse du script dans js/avis-config.js, affichage dans js/temoignages.js -->
+    <script src="/js/avis-config.js" defer></script>
+    <script src="/js/temoignages.js" defer></script>
 
     <!-- Restauration du bouton Sticky Mobile (Appel) -->
     <div id="sticky-cta-mobile" class="sticky-mobile-wrapper">
