@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+<head>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Page réservée aux clients (lien remis pendant le rendez-vous) : jamais dans Google, jamais dans le sitemap, aucun lien depuis le site -->
+    <title>Votre avis | DIAGO</title>
+    <meta name="robots" content="noindex, nofollow">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+
+    <style>
+        body { font-size: 17px; }
+        .avis { padding: 40px 0 64px; }
+        .avis-card { max-width: 640px; margin: 0 auto; background: var(--white); border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); padding: 36px 32px; }
+        .avis-card h1 { font-size: 1.8rem; color: var(--primary-dark); margin-bottom: 10px; text-align: center; }
+        .avis-intro { color: var(--gray-700); line-height: 1.6; margin-bottom: 24px; text-align: center; }
+        .avis-form .champ { margin-bottom: 18px; }
+        .avis-form label.titre { display: block; font-weight: 600; color: var(--gray-800); margin-bottom: 6px; }
+        .avis-form input[type=text], .avis-form select, .avis-form textarea { width: 100%; box-sizing: border-box; padding: 12px 14px; border: 1px solid var(--gray-300, #d0d5dd); border-radius: var(--radius-md, 10px); font: inherit; background: #fff; }
+        .avis-form textarea { min-height: 130px; resize: vertical; }
+        .etoiles { display: flex; gap: 8px; flex-wrap: wrap; }
+        .etoiles input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+        .etoiles label { cursor: pointer; padding: 10px 14px; border: 1px solid var(--gray-300, #d0d5dd); border-radius: 10px; color: var(--gray-700); user-select: none; }
+        .etoiles input:checked + label { background: var(--primary-pale); border-color: var(--primary-medium); color: var(--primary-dark); font-weight: 600; }
+        .etoiles input:focus-visible + label { outline: 2px solid var(--primary-medium); outline-offset: 2px; }
+        .accord { display: flex; gap: 10px; align-items: flex-start; line-height: 1.5; color: var(--gray-700); }
+        .accord input { margin-top: 4px; width: 18px; height: 18px; flex: 0 0 auto; }
+        .pot-de-miel { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+        .avis-envoyer { width: 100%; justify-content: center; }
+        .avis-message { margin-top: 16px; text-align: center; font-weight: 600; }
+        .avis-message.ok { color: var(--accent-green); }
+        .avis-message.erreur { color: #c0392b; }
+        .avis-mention { margin-top: 22px; font-size: 0.85rem; color: var(--gray-600); line-height: 1.5; }
+        @media (max-width: 560px) { .avis { padding: 20px 0 40px; } .avis-card { padding: 26px 18px; } .avis-card h1 { font-size: 1.5rem; } }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo-link" aria-label="Retour à l'accueil Diago">
+                    <div class="diago-logo header-logo">
+                        <svg class="logo-icon" viewBox="0 0 100 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Logo Diago">
+                            <defs>
+                                <linearGradient id="gradBlue" x1="0%" y1="100%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:#0b4e85"/>
+                                    <stop offset="100%" style="stop-color:#2a9df4"/>
+                                </linearGradient>
+                                <linearGradient id="gradTeal" x1="0%" y1="100%" x2="0%" y2="0%">
+                                    <stop offset="0%" style="stop-color:#0f3a5d"/>
+                                    <stop offset="100%" style="stop-color:#4ecdc4"/>
+                                </linearGradient>
+                            </defs>
+                            <path d="M 50 5 C 30 30, 0 60, 5 90 C 10 120, 45 135, 70 120 C 50 125, 20 110, 20 85 C 20 55, 45 30, 50 5 Z" fill="url(#gradBlue)" />
+                            <path d="M 50 5 C 70 40, 95 70, 85 100 C 80 115, 65 122, 55 122 C 75 115, 80 95, 75 80 C 65 55, 55 25, 50 5 Z" fill="url(#gradTeal)" />
+                        </svg>
+                        <div class="logo-text">
+                            <span class="brand-name">DIAGO</span>
+                            <span class="tagline">Comprendre l'humidité avant les travaux</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="avis">
+        <div class="container">
+            <div class="avis-card">
+                <h1>Votre avis compte</h1>
+                <p class="avis-intro">Merci pour votre confiance. En quelques lignes, dites-nous ce que le diagnostic vous a apporté.</p>
+
+                <form id="avisForm" class="avis-form" novalidate>
+                    <div class="champ">
+                        <label class="titre" for="prenom">Votre prénom *</label>
+                        <input type="text" id="prenom" name="prenom" required autocomplete="given-name">
+                    </div>
+                    <div class="champ">
+                        <label class="titre" for="commune">Votre commune *</label>
+                        <input type="text" id="commune" name="commune" required autocomplete="address-level2">
+                    </div>
+                    <div class="champ">
+                        <label class="titre" for="bien">Type de bien</label>
+                        <select id="bien" name="bien">
+                            <option value="">Choisissez</option>
+                            <option>Appartement</option>
+                            <option>Maison</option>
+                            <option>Immeuble ou copropriété</option>
+                            <option>Local professionnel</option>
+                        </select>
+                    </div>
+                    <div class="champ">
+                        <span class="titre" style="display:block;font-weight:600;color:var(--gray-800);margin-bottom:6px;">Votre note *</span>
+                        <div class="etoiles" role="radiogroup" aria-label="Votre note sur 5">
+                            <input type="radio" id="n5" name="note" value="5"><label for="n5">5 ★</label>
+                            <input type="radio" id="n4" name="note" value="4"><label for="n4">4 ★</label>
+                            <input type="radio" id="n3" name="note" value="3"><label for="n3">3 ★</label>
+                            <input type="radio" id="n2" name="note" value="2"><label for="n2">2 ★</label>
+                            <input type="radio" id="n1" name="note" value="1"><label for="n1">1 ★</label>
+                        </div>
+                    </div>
+                    <div class="champ">
+                        <label class="titre" for="temoignage">Votre témoignage *</label>
+                        <textarea id="temoignage" name="temoignage" required placeholder="Ce qui vous a amené, ce que le diagnostic vous a apporté…"></textarea>
+                    </div>
+                    <div class="champ pot-de-miel" aria-hidden="true">
+                        <label for="siteweb">Ne pas remplir</label>
+                        <input type="text" id="siteweb" name="siteweb" tabindex="-1" autocomplete="off">
+                    </div>
+                    <div class="champ">
+                        <label class="accord"><input type="checkbox" id="accord" name="accord" value="oui"><span>J'accepte que mon témoignage soit publié sur diago-humidite.fr avec mon prénom et ma commune uniquement.</span></label>
+                    </div>
+                    <button type="submit" class="btn-primary avis-envoyer">Envoyer mon avis</button>
+                    <div id="avisMessage" class="avis-message" role="status" aria-live="polite"></div>
+                </form>
+
+                <p class="avis-mention">Les témoignages publiés sont ceux de clients ayant bénéficié d'un diagnostic DIAGO. Ils sont publiés avec leur accord, datés, sans modification de leur contenu, et ne donnent lieu à aucune contrepartie. Vous pouvez demander à tout moment le retrait de votre témoignage.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 DIAGO · Diagnostic humidité indépendant · <a href="/mentions-legales.html" style="color:inherit">Mentions légales</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    // Adresse du script Google qui enregistre les avis dans le Google Sheet « Avis DIAGO ».
+    // À REMPLACER par l'adresse obtenue au déploiement du script (elle se termine par /exec).
+    var AVIS_URL = 'COLLER_ICI_L_ADRESSE_DU_SCRIPT_AVIS';
+
+    document.getElementById('avisForm').addEventListener('submit', async function (e) {
+        e.preventDefault();
+        var f = e.target, msg = document.getElementById('avisMessage');
+        var note = f.querySelector('input[name=note]:checked');
+        msg.className = 'avis-message';
+        if (!f.prenom.value.trim() || !f.commune.value.trim() || !f.temoignage.value.trim() || !note) {
+            msg.classList.add('erreur');
+            msg.textContent = 'Merci de renseigner votre prénom, votre commune, votre note et votre témoignage.';
+            return;
+        }
+        if (f.siteweb.value) { return; }
+        if (AVIS_URL.indexOf('https://script.google.com/') !== 0) {
+            msg.classList.add('erreur');
+            msg.textContent = "L'envoi n'est pas encore configuré.";
+            return;
+        }
+        var bouton = f.querySelector('button');
+        bouton.disabled = true;
+        bouton.textContent = 'Envoi en cours…';
+        var donnees = {
+            prenom: f.prenom.value.trim(),
+            commune: f.commune.value.trim(),
+            bien: f.bien.value,
+            note: note.value,
+            temoignage: f.temoignage.value.trim(),
+            accord: f.accord.checked ? 'oui' : 'non',
+            siteweb: f.siteweb.value
+        };
+        try {
+            await fetch(AVIS_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(donnees) });
+            f.reset();
+            msg.classList.add('ok');
+            msg.textContent = 'Merci, votre avis a bien été envoyé.';
+            bouton.textContent = 'Avis envoyé';
+        } catch (err) {
+            bouton.disabled = false;
+            bouton.textContent = 'Envoyer mon avis';
+            msg.classList.add('erreur');
+            msg.textContent = "L'envoi a échoué. Vérifiez votre connexion et réessayez.";
+        }
+    });
+    </script>
+</body>
+</html>
