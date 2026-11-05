@@ -417,7 +417,7 @@ console.log('%cExpertise indépendante en diagnostic d\'humidité', 'color: #666
 //   debut / fin : premier et dernier jour de fermeture
 // ===================================
 var DIAGO_FERMETURES = [
-    { annonce: '2026-11-09', debut: '2026-11-16', fin: '2026-12-03',
+    { annonce: '2026-11-05', debut: '2026-11-16', fin: '2026-12-03',
       texteDebut: '16\u00a0novembre', texteFin: '3\u00a0décembre', retour: 'vendredi 4\u00a0décembre' }
 ];
 
