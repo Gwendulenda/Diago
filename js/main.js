@@ -408,11 +408,43 @@ scrollTopButton.addEventListener('mouseleave', () => {
 console.log('%c🏠 Diagnostic Humidité Pro', 'color: #004d99; font-size: 24px; font-weight: bold;');
 console.log('%cExpertise indépendante en diagnostic d\'humidité', 'color: #666; font-size: 14px;');
 
+// ===================================
+// FERMETURE (CONGÉS) : BANDEAU SUR TOUTES LES PAGES
+// Pour une prochaine absence, modifier uniquement les dates ci-dessous
+// (format AAAA-MM-JJ, dates incluses). Mettre les mêmes dates dans
+// merci.html (tableau CONGES), qui gère le message après le formulaire.
+//   annonce : premier jour où le bandeau prévient de la fermeture
+//   debut / fin : premier et dernier jour de fermeture
+// ===================================
+var DIAGO_FERMETURES = [
+    { annonce: '2026-11-09', debut: '2026-11-16', fin: '2026-12-03',
+      texteDebut: '16\u00a0novembre', texteFin: '3\u00a0décembre', retour: 'vendredi 4\u00a0décembre' }
+];
 
-
-
-
-
-
-
-
+(function () {
+    var d = new Date();
+    var auj = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+    var message = '';
+    DIAGO_FERMETURES.forEach(function (f) {
+        if (auj >= f.debut && auj <= f.fin) {
+            message = '<strong>Fermé jusqu\'au ' + f.texteFin + ' inclus.</strong> Les demandes restent ouvertes : rappel à partir du ' + f.retour + ', par ordre d\'arrivée.';
+        } else if (auj >= f.annonce && auj < f.debut) {
+            message = '<strong>Fermeture du ' + f.texteDebut + ' au ' + f.texteFin + ' inclus.</strong> Pour un rendez-vous avant cette date, faites votre demande dès maintenant.';
+        }
+    });
+    if (!message) return;
+    function afficherBandeau() {
+        if (document.getElementById('bandeau-fermeture')) return;
+        var b = document.createElement('div');
+        b.id = 'bandeau-fermeture';
+        b.setAttribute('role', 'note');
+        b.style.cssText = 'background:#003366;color:#ffffff;text-align:center;font-size:14px;line-height:1.5;padding:10px 16px;';
+        b.innerHTML = message;
+        document.body.insertBefore(b, document.body.firstChild);
+    }
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', afficherBandeau);
+    } else {
+        afficherBandeau();
+    }
+})();
