@@ -30,12 +30,17 @@
         .merci-actions { display: flex; flex-direction: column; gap: 12px; align-items: center; }
         .merci-actions .btn-call { font-size: 1.1rem; padding: 14px 26px; }
         .merci-actions small { color: var(--gray-600); }
+        .merci-resa { margin: 0 0 26px; padding: 20px 18px; border: 2px solid var(--primary-pale); border-radius: var(--radius-md); }
+        .merci-resa p { color: var(--gray-700); line-height: 1.55; margin: 0 0 14px; }
+        .btn-resa { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: var(--primary-medium); color: #ffffff; font-weight: 700; text-decoration: none; border-radius: 50px; padding: 14px 26px; font-size: 1.05rem; }
+        .btn-resa:hover { background: var(--primary-dark); }
         .merci-retour { display: inline-block; margin-top: 22px; color: var(--primary-medium); }
         @media (max-width: 560px) {
             .merci { padding: 28px 0 48px; }
             .merci-card { padding: 28px 20px; }
             .merci-card h1 { font-size: 1.6rem; }
             .merci-actions .btn-call { width: 100%; }
+            .btn-resa { width: 100%; }
         }
     </style>
 </head>
@@ -83,6 +88,13 @@
                     <li><i class="fas fa-camera" aria-hidden="true"></i><span><strong>Pour gagner du temps</strong> : préparez quelques photos des zones concernées.</span></li>
                 </ul>
 
+                <div class="merci-resa" id="merci-resa" hidden>
+                    <p id="merci-resa-texte"><strong>Gagnez du temps</strong> : choisissez vous-même le moment de notre appel.</p>
+                    <a href="#" id="btn-resa" class="btn-resa" target="_blank" rel="noopener">
+                        <i class="fas fa-calendar-check" aria-hidden="true"></i>
+                        <span>Choisir mon créneau de rappel</span>
+                    </a>
+                </div>
                 <div class="merci-actions" id="merci-actions">
                     <a href="#" id="btn-appel-merci" class="btn-call">
                         <i class="fas fa-phone" aria-hidden="true"></i>
@@ -105,6 +117,18 @@
     </footer>
 
     <script>
+    // RÉSERVATION DU RAPPEL : lien de la page de réservation Google Agenda « Rappel DIAGO ».
+    // Laisser vide ('') pour masquer le bloc. Mettre le même lien dans js/main.js (DIAGO_LIEN_RESERVATION).
+    var LIEN_RESERVATION = 'https://calendar.app.google/JKhaDJ5TPEh32kHh6';
+    document.addEventListener('DOMContentLoaded', function () {
+        var bloc = document.getElementById('merci-resa');
+        var bouton = document.getElementById('btn-resa');
+        if (LIEN_RESERVATION && bloc && bouton) {
+            bouton.href = LIEN_RESERVATION;
+            bloc.hidden = false;
+        }
+    });
+
     // CONGÉS : ajouter ou modifier une période ici (dates incluses, au format AAAA-MM-JJ).
     // Pendant une période, la page annonce la date de rappel et masque le bouton d'appel.
     var CONGES = [
@@ -122,6 +146,8 @@
                     if (intro) intro.textContent = 'Merci pour votre confiance. Nous sommes absents en ce moment : votre demande est bien enregistrée et sera traitée en priorité à notre retour.';
                     if (rappel) rappel.innerHTML = '<strong>Rappel à partir du ' + c.retour + '</strong>, par ordre d\'arrivée des demandes.';
                     if (actions) actions.style.display = 'none';
+                    var resaTexte = document.getElementById('merci-resa-texte');
+                    if (resaTexte) resaTexte.innerHTML = '<strong>Choisissez dès maintenant votre créneau de rappel</strong>, à partir du ' + c.retour + '.';
                 });
             }
         });

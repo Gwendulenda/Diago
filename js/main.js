@@ -416,6 +416,10 @@ console.log('%cExpertise indépendante en diagnostic d\'humidité', 'color: #666
 //   annonce : premier jour où le bandeau prévient de la fermeture
 //   debut / fin : premier et dernier jour de fermeture
 // ===================================
+// Lien de la page de réservation Google Agenda « Rappel DIAGO » (même lien que dans merci.html).
+// Pendant une fermeture, le bandeau propose de réserver un créneau de rappel pour le retour.
+var DIAGO_LIEN_RESERVATION = 'https://calendar.app.google/JKhaDJ5TPEh32kHh6';
+
 var DIAGO_FERMETURES = [
     { annonce: '2026-11-05', debut: '2026-11-16', fin: '2026-12-03',
       texteDebut: '16\u00a0novembre', texteFin: '3\u00a0décembre', retour: 'vendredi 4\u00a0décembre' }
@@ -428,6 +432,9 @@ var DIAGO_FERMETURES = [
     DIAGO_FERMETURES.forEach(function (f) {
         if (auj >= f.debut && auj <= f.fin) {
             message = '<strong>Fermé jusqu\'au ' + f.texteFin + ' inclus.</strong> Les demandes restent ouvertes : rappel à partir du ' + f.retour + ', par ordre d\'arrivée.';
+            if (DIAGO_LIEN_RESERVATION) {
+                message += ' <a href="' + DIAGO_LIEN_RESERVATION + '" target="_blank" rel="noopener" style="color:#ffffff;text-decoration:underline;font-weight:600;white-space:nowrap;">Réserver mon créneau de rappel</a>';
+            }
         } else if (auj >= f.annonce && auj < f.debut) {
             message = '<strong>Fermeture du ' + f.texteDebut + ' au ' + f.texteFin + ' inclus.</strong> Pour un rendez-vous avant cette date, faites votre demande dès maintenant.';
         }
